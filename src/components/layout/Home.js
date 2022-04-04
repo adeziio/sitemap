@@ -52,8 +52,12 @@ export default class Home extends Component {
 
         return (
             <>
-                <Header setShowProjects={this.setShowProjects} setShowAbout={this.setShowAbout} setShowContact={this.setShowContact} />
-                <Projects showProjects={showProjects} />
+                <div className="header-container">
+                    <Header setShowProjects={this.setShowProjects} setShowAbout={this.setShowAbout} setShowContact={this.setShowContact} />
+                </div>
+                <div className="content-container">
+                    <Projects showProjects={showProjects} />
+                </div>
             </>
         )
     }
