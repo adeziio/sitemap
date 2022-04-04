@@ -12,8 +12,8 @@ export default class Contact extends Component {
 
         return (
             <>
-                <Grid container column={3}>
-                    <Grid item xs={4}>
+                <Grid container spacing={3}>
+                    <Grid item xs={16}>
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
                             Location:
                         </Typography>
@@ -21,7 +21,7 @@ export default class Contact extends Component {
                             Woodbridge, Virginia
                         </Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={16}>
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
                             Phone:
                         </Typography>
@@ -29,15 +29,15 @@ export default class Contact extends Component {
                             (703) 663-0098
                         </Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={16}>
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
                             Email:
                         </Typography>
                         <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                            adeziio@yahoo.com
+                            <a href="mailto:adeziio@yahoo.com">adeziio@yahoo.com</a>
                         </Typography>
                         <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                            adeziio.t@gmail.com
+                            <a href="mailto:adeziio.t@gmail.com">adeziio.t@gmail.com</a>
                         </Typography>
                     </Grid>
                 </Grid>

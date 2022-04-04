@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Typography, Grid, CardMedia } from '@mui/material';
+import { Typography, Grid, CardMedia, Grow } from '@mui/material';
 import profile from "./../img/profile.jpg";
 
 export default class About extends Component {
@@ -15,20 +15,30 @@ export default class About extends Component {
             <>
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
-                        <CardMedia
-                            component="img"
-                            image={profile}
-                            alt={"profile-pic"}
-                        />
+                        <Grow
+                            in={true}
+                            style={{ transformOrigin: '0 0 0' }}
+                            {...(true ? { timeout: (1000) } : {})}
+                        >
+                            <div style={{ width: "100%" }}>
+                                <CardMedia
+                                    component="img"
+                                    image={profile}
+                                    alt={"profile-pic"}
+                                />
+                            </div>
+                        </Grow>
                     </Grid>
                     <Grid item xs={8} >
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
                             About Me
                         </Typography>
                         <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                            Hi, my name is Aden, and this is my personal portfolio webpage 😎
-                            I recently graduated from George Mason University with Honors Cum Laude 🎓
-                            Currently, I am working as a Software Developer at SAIC 👔
+                            Hi, my name is Aden, and this is my personal portfolio webpage.
+                            I graduated from George Mason University in 2020 with Honors Cum Laude.
+                            I currently work as a Software Engineer at SAIC.
+                            I enjoy playing video game with friends and create websites for fun.
+                            Feel free to explore my projects or contact me.
                         </Typography>
                     </Grid>
                 </Grid>
