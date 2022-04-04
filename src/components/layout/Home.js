@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './../css/style.css';
 import Header from "./Header";
 import Projects from "./Projects";
+import About from "./About";
+import Contact from "./Contact";
+import Footer from "./Footer";
 
 export default class Home extends Component {
     constructor(props) {
@@ -48,17 +51,22 @@ export default class Home extends Component {
     }
 
     render() {
-        const { showProjects } = this.state;
+        const { showProjects, showAbout, showContact } = this.state;
 
         return (
-            <>
+            <div >
                 <div className="header-container">
                     <Header setShowProjects={this.setShowProjects} setShowAbout={this.setShowAbout} setShowContact={this.setShowContact} />
                 </div>
                 <div className="content-container">
-                    <Projects showProjects={showProjects} />
+                    {showProjects ? <Projects showProjects={showProjects} /> : null}
+                    {showAbout ? <About /> : null}
+                    {showContact ? <Contact /> : null}
                 </div>
-            </>
+                <div className="footer-container">
+                    <Footer />
+                </div>
+            </div>
         )
     }
 }

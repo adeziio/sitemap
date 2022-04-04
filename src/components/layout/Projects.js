@@ -10,7 +10,6 @@ export default class Projects extends Component {
     }
 
     render() {
-        const { showProjects } = this.props;
         let growCounter = 500;
 
         const icon = (item) => (
@@ -33,38 +32,33 @@ export default class Projects extends Component {
 
         return (
             <>
-                {showProjects ?
-                    <>
-                        <Box container>
-                            {ProjectsItem.map((row, rowIndex) => {
-                                return (
-                                    <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', m: 2 }}>
-                                        {
-                                            row.map((col, columnIndex) => {
-                                                return (
-                                                    <>
-                                                        <Grow
-                                                            key={`${col}-${columnIndex}`}
-                                                            in={showProjects}
-                                                            style={{ transformOrigin: '0 0 0' }}
-                                                            {...(showProjects ? { timeout: (growCounter += 500) } : {})}
-                                                        >
-                                                            <div style={{ width: "33%" }}>
-                                                                {icon(col)}
-                                                            </div>
-                                                        </Grow>
-                                                    </>
-                                                )
-                                            })
-                                        }
-                                    </Box>
-                                )
-                            })
-                            }
-                        </Box>
-                    </>
-                    : null
-                }
+                <Box container>
+                    {ProjectsItem.map((row, rowIndex) => {
+                        return (
+                            <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', m: 2 }}>
+                                {
+                                    row.map((col, columnIndex) => {
+                                        return (
+                                            <>
+                                                <Grow
+                                                    key={`${col}-${columnIndex}`}
+                                                    in={true}
+                                                    style={{ transformOrigin: '0 0 0' }}
+                                                    {...(true ? { timeout: (growCounter += 500) } : {})}
+                                                >
+                                                    <div style={{ width: "33%" }}>
+                                                        {icon(col)}
+                                                    </div>
+                                                </Grow>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </Box>
+                        )
+                    })
+                    }
+                </Box>
             </>
         )
     }

@@ -13,4 +13,9 @@
     left: 0;
     right: 0;
     margin: auto;
+    padding: 1rem;
+}
+
+.footer-container {
+    margin: 2rem;
 }
