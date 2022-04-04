@@ -23,7 +23,7 @@ export default class Projects extends Component {
                         alt={item.name}
                     />
                     <CardContent fontSize="1rem">
-                        <Typography component="div" fontFamily="cursive" fontSize="1rem" >
+                        <Typography component="div" fontSize="1rem" >
                             <div style={{ backgroundColor: "white", color: "#1976d2" }}>{item.name}</div>
                         </Typography>
                     </CardContent>

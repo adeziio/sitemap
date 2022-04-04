@@ -33,13 +33,13 @@ export default class Header extends Component {
                             alt="img"
                             width="35%"
                         />
-                        <div style={{ fontSize: "30px", color: "white", fontFamily: "cursive" }}>Aden Tran</div>
+                        <div style={{ fontSize: "2rem", color: "white", fontFamily: "cursive" }}>Aden Tran</div>
                     </Grid>
-                    <Grid item padding={1} margin="auto" spacing={1} left="0" right="0">
+                    <Grid item margin="auto"  >
                         <Stack
                             direction="row"
                             divider={<Divider orientation="vertical" flexItem />}
-                            spacing={2}
+                            spacing={1}
                         >
                             <Button color="secondary" variant="contained" startIcon={<Extension />} onClick={this.setShowProjects}>Projects</Button>
                             <Button color="warning" variant="contained" startIcon={<Person />} onClick={this.setShowAbout}>About</Button>
