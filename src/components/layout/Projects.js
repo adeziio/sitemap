@@ -35,7 +35,7 @@ export default class Projects extends Component {
             <>
                 {showProjects ?
                     <>
-                        <Box sx={{ margin: "2rem", display: "inline-block" }}>
+                        <Box sx={{ display: "inline-block" }}>
                             {ProjectsItem.map((row, rowIndex) => {
                                 return (
                                     <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', maxWidth: "900px", m: 2 }}>
