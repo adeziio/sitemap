@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Paper, Grow, Box } from '@mui/material';
+import { Grow, Box, Typography, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
+import waddle from "./../img/waddle.png";
 
 export default class Projects extends Component {
     constructor(props) {
@@ -12,29 +13,30 @@ export default class Projects extends Component {
         const { showProjects } = this.props;
 
         const icon = (
-            <Paper sx={{ m: 1 }} elevation={4}>
-                <Box component="svg" sx={{ width: 100, height: 100 }}>
-                    <Box
-                        component="polygon"
-                        sx={{
-                            fill: (theme) => theme.palette.common.white,
-                            stroke: (theme) => theme.palette.divider,
-                            strokeWidth: 1,
-                        }}
-                        points="0,100 50,00, 100,100"
+            <Card sx={{ m: 1 }} elevation={4} onClick={() => window.open("https://waddlez.vercel.app/", "_blank")}>
+                <CardActionArea>
+                    <CardMedia
+                        component="img"
+                        // height="140"
+                        width="100%"
+                        image={waddle}
+                        alt="waddle"
                     />
-                </Box>
-            </Paper>
+                    <CardContent>
+                        <Typography variant="h5" component="div" fontFamily="cursive">
+                            Waddle
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
         );
-
-
 
         return (
             <>
                 {showProjects ?
                     <>
-                        <Box sx={{ margin: "2rem" }}>
-                            <Box sx={{ display: 'flex' }}>
+                        <Box sx={{ margin: "2rem", display: "inline-block" }}>
+                            <Box sx={{ display: 'flex', maxWidth: "900px" }}>
                                 <Grow
                                     in={showProjects}
                                     style={{ transformOrigin: '0 0 0' }}
@@ -64,7 +66,7 @@ export default class Projects extends Component {
                                 </Grow>
                             </Box>
 
-                            <Box sx={{ display: 'flex' }} >
+                            <Box sx={{ display: 'flex', maxWidth: "900px" }} >
                                 <Grow
                                     in={showProjects}
                                     style={{ transformOrigin: '0 0 0' }}
@@ -94,7 +96,7 @@ export default class Projects extends Component {
                                 </Grow>
                             </Box>
 
-                            <Box sx={{ display: 'flex' }} >
+                            <Box sx={{ display: 'flex', maxWidth: "900px" }} >
                                 <Grow
                                     in={showProjects}
                                     style={{ transformOrigin: '0 0 0' }}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Grid, Stack, Divider } from '@mui/material';
-import logoDark from "./../img/logo-dark.png"
+import logo from "./../img/logo.png"
 
 export default class Header extends Component {
     constructor(props) {
@@ -28,11 +28,11 @@ export default class Header extends Component {
                 <Grid container >
                     <Grid item padding={1} margin="auto" spacing={1} left="0" right="0">
                         <img
-                            src={logoDark}
+                            src={logo}
                             alt="img"
                             width="35%"
                         />
-                        <div style={{ fontSize: "30px" }}>Aden Tran</div>
+                        <div style={{ fontSize: "30px", color: "white", fontFamily: "cursive" }}>Aden Tran</div>
                     </Grid>
                     <Grid item padding={1} margin="auto" spacing={1} left="0" right="0">
                         <Stack
