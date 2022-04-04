@@ -40,9 +40,10 @@ export default class Header extends Component {
                             direction="row"
                             divider={<Divider orientation="vertical" flexItem />}
                             spacing={1}
+                            margin={1}
                         >
-                            <Button color="secondary" variant="contained" startIcon={<Extension />} onClick={this.setShowProjects}>Projects</Button>
                             <Button color="warning" variant="contained" startIcon={<Person />} onClick={this.setShowAbout}>About</Button>
+                            <Button color="secondary" variant="contained" startIcon={<Extension />} onClick={this.setShowProjects}>Projects</Button>
                             <Button color="success" variant="contained" startIcon={<LocalPhone />} onClick={this.setShowContact}>Contact</Button>
                         </Stack>
                     </Grid>
