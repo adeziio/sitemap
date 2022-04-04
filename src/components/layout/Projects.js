@@ -22,8 +22,8 @@ export default class Projects extends Component {
                         image={item.image}
                         alt={item.name}
                     />
-                    <CardContent >
-                        <Typography component="div" fontFamily="cursive" fontSize="2rem" >
+                    <CardContent fontSize="1rem">
+                        <Typography component="div" fontFamily="cursive" fontSize="1rem" >
                             <div style={{ backgroundColor: "white", color: "#1976d2" }}>{item.name}</div>
                         </Typography>
                     </CardContent>
@@ -35,10 +35,10 @@ export default class Projects extends Component {
             <>
                 {showProjects ?
                     <>
-                        <Box sx={{ display: "inline-block" }}>
+                        <Box container>
                             {ProjectsItem.map((row, rowIndex) => {
                                 return (
-                                    <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', maxWidth: "900px", m: 2 }}>
+                                    <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', m: 2 }}>
                                         {
                                             row.map((col, columnIndex) => {
                                                 return (
