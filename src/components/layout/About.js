@@ -34,7 +34,7 @@ export default class About extends Component {
                             About Me
                         </Typography>
                         <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                            Hi, my name is Aden, and this is my personal sitemap webpage.
+                            Hi, my name is Aden Tran, and this is a sitemap webpage for all of my projects.
                             I graduated from George Mason University in 2020 with Honors Cum Laude.
                             I currently work as a Software Engineer at SAIC.
                             I enjoy playing video game with friends and create websites for fun.

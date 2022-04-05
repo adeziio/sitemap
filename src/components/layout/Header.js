@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Grid, Stack, Divider } from '@mui/material';
 import { Extension, Person, LocalPhone } from '@mui/icons-material';
-import logo from "./../img/logo.png"
+import logo from "./../img/project-img.png"
 
 export default class Header extends Component {
     constructor(props) {
@@ -33,7 +33,6 @@ export default class Header extends Component {
                             alt="img"
                             width="35%"
                         />
-                        <div style={{ fontSize: "2rem", color: "white", fontFamily: "cursive" }}>Aden Tran</div>
                     </Grid>
                     <Grid item margin="auto"  >
                         <Stack
