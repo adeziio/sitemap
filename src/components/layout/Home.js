@@ -10,14 +10,10 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showProjects: false,
+            showProjects: true,
             showAbout: false,
             showContact: false
         }
-    }
-
-    componentDidMount = () => {
-        this.setShowProjects(true);
     }
 
     setShowProjects = (status) => {
@@ -59,8 +55,8 @@ export default class Home extends Component {
                     <Header setShowProjects={this.setShowProjects} setShowAbout={this.setShowAbout} setShowContact={this.setShowContact} />
                 </div>
                 <div className="content-container">
-                    {showProjects ? <Projects showProjects={showProjects} /> : null}
                     {showAbout ? <About /> : null}
+                    {showProjects ? <Projects showProjects={showProjects} /> : null}
                     {showContact ? <Contact /> : null}
                 </div>
                 <div className="footer-container">

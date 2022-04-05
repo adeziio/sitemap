@@ -27,7 +27,7 @@ export default class Header extends Component {
         return (
             <>
                 <Grid container >
-                    <Grid item padding={1} margin="auto" spacing={1} left="0" right="0">
+                    <Grid className="title" item padding={1} margin="auto" spacing={1} left="0" right="0" onClick={() => window.location.reload()}>
                         <img
                             src={logo}
                             alt="img"
