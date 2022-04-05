@@ -13,7 +13,7 @@ export default class Projects extends Component {
         let growCounter = 500;
 
         const icon = (item) => (
-            <Card sx={{ m: 2, height: "100%", transition: "transform 200ms ease-in-out" }} className="project-card" elevation={10} onClick={() => window.open(item.url, "_blank")}>
+            <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} className="project-card" elevation={10} onClick={() => window.open(item.url, "_blank")}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
@@ -35,7 +35,7 @@ export default class Projects extends Component {
                 <Box container>
                     {ProjectsItem.map((row, rowIndex) => {
                         return (
-                            <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', m: 3 }}>
+                            <Box key={`${row}-${rowIndex}`} sx={{ display: 'flex', m: 1 }}>
                                 {
                                     row.map((col, columnIndex) => {
                                         return (
