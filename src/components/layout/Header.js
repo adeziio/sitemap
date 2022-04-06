@@ -1,52 +1,164 @@
 import React, { Component } from 'react';
-import { Button, Grid, Stack, Divider } from '@mui/material';
-import { Extension, Person, LocalPhone } from '@mui/icons-material';
-import logo from "./../img/project-img.png"
+import { Button, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Tooltip, MenuItem } from '@mui/material';
+import { MenuOutlined, Stars } from '@mui/icons-material';
+import logo from "./../img/logo.png"
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            anchorElLeft: null,
+            anchorElRight: null
         }
     }
 
-    setShowProjects = () => {
-        this.props.setShowProjects(true);
+    setAnchorElLeft = (param) => {
+        this.setState({
+            anchorElLeft: param
+        })
     }
 
-    setShowAbout = (status) => {
-        this.props.setShowAbout(true);
+    setAnchorElRight = (param) => {
+        this.setState({
+            anchorElRight: param
+        })
     }
 
-    setShowContact = (status) => {
-        this.props.setShowContact(true);
+    setPage = (page) => {
+        this.props.setCurrentPage(page);
+        this.handleCloseRightMenu();
+    }
+
+    setFilter = (filter) => {
+        this.props.setCurrentPage("Gallery");
+        this.props.setCurrentFilter(filter);
+        this.handleCloseLeftMenu();
+    }
+
+    handleCloseLeftMenu = () => {
+        this.setAnchorElLeft(null);
+    }
+
+    handleCloseRightMenu = () => {
+        this.setAnchorElRight(null);
+    }
+
+    handleOpenLeftMenu = (event) => {
+        this.setAnchorElLeft(event.currentTarget);
+    }
+
+    handleOpenRightMenu = (event) => {
+        this.setAnchorElRight(event.currentTarget);
     }
 
     render() {
+        const { anchorElLeft, anchorElRight } = this.state;
+
+        const filters = ['Authentic', 'Memes'];
+        const pages = ['About', 'Contact'];
 
         return (
             <>
-                <Grid container >
-                    <Grid className="title" item padding={1} margin="auto" spacing={1} left="0" right="0" onClick={() => window.location.reload()}>
-                        <img
-                            src={logo}
-                            alt="img"
-                            width="35%"
-                        />
-                    </Grid>
-                    <Grid item margin="auto"  >
-                        <Stack
-                            direction="row"
-                            divider={<Divider orientation="vertical" flexItem />}
-                            spacing={1}
-                            margin={1}
-                        >
-                            <Button color="warning" variant="contained" startIcon={<Person />} onClick={this.setShowAbout}>About</Button>
-                            <Button color="secondary" variant="contained" startIcon={<Extension />} onClick={this.setShowProjects}>Projects</Button>
-                            <Button color="success" variant="contained" startIcon={<LocalPhone />} onClick={this.setShowContact}>Contact</Button>
-                        </Stack>
-                    </Grid>
-                </Grid>
+                <AppBar position="static" sx={{ backgroundColor: "#005b96" }}>
+                    <Container maxWidth="xl">
+                        <Toolbar disableGutters>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+                            >
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                            </Typography>
+
+                            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                                <IconButton
+                                    size="large"
+                                    aria-label="current page"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={this.handleOpenLeftMenu}
+                                    color="inherit"
+                                >
+                                    <MenuOutlined />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorElLeft}
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'left',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'left',
+                                    }}
+                                    open={Boolean(anchorElLeft)}
+                                    onClose={this.handleCloseLeftMenu}
+                                    sx={{
+                                        display: { xs: 'block', md: 'none' },
+                                    }}
+                                >
+                                    {filters.map((filter) => (
+                                        <MenuItem key={filter} onClick={() => { this.setFilter(filter) }}>
+                                            <Typography textAlign="center">{filter}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                            >
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                            </Typography>
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                                {filters.map((filter) => (
+                                    <Button
+                                        key={filter}
+                                        onClick={() => { this.setFilter(filter) }}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {filter}
+                                    </Button>
+                                ))}
+                            </Box>
+
+                            <Box sx={{ flexGrow: 0 }} >
+                                <Tooltip title="More">
+                                    <Typography onClick={this.handleOpenRightMenu} sx={{ p: 0 }}>
+                                        <Stars className="pointer" fontSize="large" />
+                                    </Typography>
+                                </Tooltip>
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElRight}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElRight)}
+                                    onClose={this.handleCloseRightMenu}
+                                >
+                                    {pages.map((page) => (
+                                        <MenuItem key={page} onClick={() => { this.setPage(page) }}>
+                                            <Typography textAlign="center" >{page}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
             </>
         )
     }

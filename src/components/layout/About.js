@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, Grid, CardMedia, Grow } from '@mui/material';
-import profile from "./../img/profile.jpg";
+import image from "./../img/project-img.png";
 
 export default class About extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class About extends Component {
                             <div style={{ width: "100%" }}>
                                 <CardMedia
                                     component="img"
-                                    image={profile}
+                                    image={image}
                                     alt={"profile-pic"}
                                 />
                             </div>
@@ -31,14 +31,12 @@ export default class About extends Component {
                     </Grid>
                     <Grid item xs={8} >
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
-                            About Me
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                            Hi, my name is Aden Tran, and this is a sitemap webpage for all of my projects.
-                            I graduated from George Mason University in 2020 with Honors Cum Laude.
-                            I currently work as a Software Engineer at SAIC.
-                            I enjoy playing video game with friends and create websites for fun.
-                            Feel free to explore my projects or contact me.
+                            <p>Welcome to the Star Gallery collection.</p>
+                            <p>Snacks and drinks will NOT be provided.</p>
+                            <p>You can look but don't touch.</p>
+                            <p>Videos and images are for personal/educational purposes only.</p>
+                            <p>Under section 107 of the Copyright Act 1976, allowance is made for "Fair Use" for purposes such as criticism, comment, news, reporting, teaching, scholarship, and research.</p>
+                            <p>Fair use is a use permitted by Copyright Statue that might otherwise be infringing, Non-Profit, Educational, or Personal Use tips the balance in favor of Fair Use.</p>
                         </Typography>
                     </Grid>
                 </Grid>

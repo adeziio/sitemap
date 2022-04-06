@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './../css/style.css';
 import Header from "./Header";
-import Projects from "./Projects";
+import Gallery from "./Gallery";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -10,54 +10,35 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showProjects: true,
-            showAbout: false,
-            showContact: false
+            currentPage: "Gallery",
+            currentFilter: "All"
         }
     }
 
-    setShowProjects = (status) => {
-        if (status) {
-            this.setState({
-                showProjects: status,
-                showAbout: false,
-                showContact: false
-            })
-        }
+    setCurrentPage = (page) => {
+        this.setState({
+            currentPage: page
+        })
     }
 
-    setShowAbout = (status) => {
-        if (status) {
-            this.setState({
-                showProjects: false,
-                showAbout: status,
-                showContact: false
-            })
-        }
-    }
-
-    setShowContact = (status) => {
-        if (status) {
-            this.setState({
-                showProjects: false,
-                showAbout: false,
-                showContact: status
-            })
-        }
+    setCurrentFilter = (filter) => {
+        this.setState({
+            currentFilter: filter
+        })
     }
 
     render() {
-        const { showProjects, showAbout, showContact } = this.state;
+        const { currentPage, currentFilter } = this.state;
 
         return (
             <div >
                 <div className="header-container">
-                    <Header setShowProjects={this.setShowProjects} setShowAbout={this.setShowAbout} setShowContact={this.setShowContact} />
+                    <Header setCurrentPage={this.setCurrentPage} setCurrentFilter={this.setCurrentFilter} />
                 </div>
                 <div className="content-container">
-                    {showAbout ? <About /> : null}
-                    {showProjects ? <Projects showProjects={showProjects} /> : null}
-                    {showContact ? <Contact /> : null}
+                    {currentPage === "Gallery" ? <Gallery currentFilter={currentFilter} /> : null}
+                    {currentPage === "About" ? <About /> : null}
+                    {currentPage === "Contact" ? <Contact /> : null}
                 </div>
                 <div className="footer-container">
                     <Footer />
