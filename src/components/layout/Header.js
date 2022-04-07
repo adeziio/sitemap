@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Tooltip, MenuItem } from '@mui/material';
 import { MenuOutlined, Stars } from '@mui/icons-material';
-import logo from "./../img/logo.png"
+import logo from "./../logo/logo.png"
 
 export default class Header extends Component {
     constructor(props) {
@@ -54,12 +54,12 @@ export default class Header extends Component {
     render() {
         const { anchorElLeft, anchorElRight } = this.state;
 
-        const filters = ['Authentic', 'Memes'];
+        const filters = ['Image', 'Video', 'Gif'];
         const pages = ['About', 'Contact'];
 
         return (
             <>
-                <AppBar position="static" sx={{ backgroundColor: "#005b96" }}>
+                <AppBar position="fixed" sx={{ backgroundColor: "#005b96" }}>
                     <Container maxWidth="xl">
                         <Toolbar disableGutters>
                             <Typography

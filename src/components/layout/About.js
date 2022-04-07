@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Typography, Grid, CardMedia, Grow } from '@mui/material';
-import image from "./../img/project-img.png";
+import image from "./../logo/project-img.png";
 
 export default class About extends Component {
     constructor(props) {

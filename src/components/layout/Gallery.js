@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Grow, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
-import GalleryStorage from "../data/GalleryStorage";
+import { Zoom, Card, CardActionArea, CardMedia } from '@mui/material';
+import ImgGallery from "../data/ImgGallery";
+import GifGallery from "../data/GifGallery";
 
 export default class Gallery extends Component {
     constructor(props) {
@@ -12,9 +13,7 @@ export default class Gallery extends Component {
     render() {
         const { currentFilter } = this.props;
 
-        console.log(currentFilter)
-
-        let growCounter = 500;
+        let growCounter = 0;
 
         const icon = (item) => (
             <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} className="project-card" elevation={5} onClick={() => { }}>
@@ -22,35 +21,45 @@ export default class Gallery extends Component {
                     <CardMedia
                         component="img"
                         width="100%"
-                        image={item.image}
+                        image={item}
                         alt={"img"}
                     />
-                    <CardContent fontSize="1rem">
-                    </CardContent>
                 </CardActionArea>
             </Card>
         )
 
         return (
             <>
-                {GalleryStorage.map((row, rowIndex) => {
-                    return (
+                {currentFilter === "All" || currentFilter === "Image" ?
+                    ImgGallery.map((row, rowIndex) => {
+                        return (
+                            <>
+                                <Zoom in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
+                                    <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
+                                        {icon(row)}
+                                    </div>
+                                </Zoom>
+                            </>
 
-                        <>
-                            <Grow
-                                key={`${row}-${rowIndex}`}
-                                in={true}
-                                style={{ transformOrigin: '0 0 0' }}
-                                {...(true ? { timeout: (growCounter += 500) } : {})}
-                            >
-                                <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
-                                    {icon(row)}
-                                </div>
-                            </Grow>
-                        </>
+                        )
+                    })
+                    : null
+                }
 
-                    )
-                })
+                {currentFilter === "All" || currentFilter === "Gif" ?
+                    GifGallery.map((row, rowIndex) => {
+                        return (
+                            <>
+                                <Zoom in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
+                                    <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
+                                        {icon(row)}
+                                    </div>
+                                </Zoom>
+                            </>
+
+                        )
+                    })
+                    : null
                 }
             </>
         )
