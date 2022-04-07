@@ -7,17 +7,11 @@
 }
 
 .header-container {
-    border: 1px solid black;
-    background-image: url('./../gif/cover.gif');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    margin-bottom: 5rem;
 }
 
 .content-container {
     background-color: white;
-    max-width: 1000px;
     left: 0;
     right: 0;
     margin: auto;
@@ -28,10 +22,22 @@
     margin: 2rem;
 }
 
-.project-card {
-    transition: transform 100ms ease-in-out;
+.photo-modal-box {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    /* for debugging */
+    /* border: 1px solid red;
+    background: orange; */
 }
 
-.project-card:hover {
-    transform: scale(1.1);
+.photo-modal-content {
+    width: auto;
+    max-width: 100%;
+    max-height: 605px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
 }
