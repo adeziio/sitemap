@@ -108,8 +108,9 @@ export default class Gallery extends Component {
                             enableMouseEvents
                         >
                             {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
+                                let isVideo = typeof item === 'string' ? item.split(".").at(-1) === "mp4" : false;
                                 return (
-                                    item.split(".").at(-1) === "mp4" ?
+                                    isVideo ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
