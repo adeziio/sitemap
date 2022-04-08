@@ -100,8 +100,8 @@ export default class Header extends Component {
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
-                                    {filters.map((filter) => (
-                                        <MenuItem key={filter} onClick={() => { this.setFilter(filter) }}>
+                                    {filters.map((filter, index) => (
+                                        <MenuItem key={`f-${filter}-${index}`} onClick={() => { this.setFilter(filter) }}>
                                             <Typography textAlign="center">{filter}</Typography>
                                         </MenuItem>
                                     ))}
@@ -116,9 +116,9 @@ export default class Header extends Component {
                                 <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                {filters.map((filter) => (
+                                {filters.map((filter, index) => (
                                     <Button
-                                        key={filter}
+                                        key={`f2-${filter}-${index}`}
                                         onClick={() => { this.setFilter(filter) }}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
@@ -149,8 +149,8 @@ export default class Header extends Component {
                                     open={Boolean(anchorElRight)}
                                     onClose={this.handleCloseRightMenu}
                                 >
-                                    {pages.map((page) => (
-                                        <MenuItem key={page} onClick={() => { this.setPage(page) }}>
+                                    {pages.map((page, index) => (
+                                        <MenuItem key={`p-${page}-${index}`} onClick={() => { this.setPage(page) }}>
                                             <Typography textAlign="center" >{page}</Typography>
                                         </MenuItem>
                                     ))}

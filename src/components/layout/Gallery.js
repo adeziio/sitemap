@@ -31,8 +31,6 @@ export default class Gallery extends Component {
         const { currentFilter } = this.props;
         const { photoModal, activeStep } = this.state;
 
-
-
         let currentGallery = [];
         let growCounter = 0;
 
@@ -48,7 +46,6 @@ export default class Gallery extends Component {
         else if (currentFilter === "Gif") {
             currentGallery = GifGallery;
         }
-
 
         const photoModalStyle = {
             position: 'absolute',
@@ -110,31 +107,31 @@ export default class Gallery extends Component {
                             onChangeIndex={handleStepChange}
                             enableMouseEvents
                         >
-                            {currentGallery.map((item, index) => (
-                                Math.abs(activeStep - index) <= 2 ? (
+                            {currentGallery.map((item, index) => {
+                                return (
+
                                     item.split(".").at(-1) === "mp4" ?
                                         <CardMedia
+                                            key={`c-${item}-${index}`}
                                             className="photo-modal-content "
                                             component="video"
                                             width="100%"
                                             controls
                                             image={item}
-                                        /> : <img className="photo-modal-content " src={item} alt="img" />
-                                ) : null
-                            ))}
+                                        /> : <img key={`c-${item}-${index}`} className="photo-modal-content " src={item} alt="img" />
+
+                                )
+                            })}
                         </SwipeableViews>
                     </Box>
                 </Modal>
                 {currentGallery.map((row, rowIndex) => {
                     return (
-                        <>
-                            <Zoom in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
-                                <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
-                                    {card(row, rowIndex)}
-                                </div>
-                            </Zoom>
-                        </>
-
+                        <Zoom key={`z-${row}-${rowIndex}`} in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
+                            <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
+                                {card(row, rowIndex)}
+                            </div>
+                        </Zoom>
                     )
                 })
                 }
