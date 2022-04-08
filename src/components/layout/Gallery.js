@@ -62,17 +62,17 @@ export default class Gallery extends Component {
         const card = (item, index) => {
             let isVideo = false;
             let itemArr = item.split(".");
-            let i = itemArr.at(-1);
+            // let i = itemArr.at(-1);
 
-            if (i === "mp4") {
-                isVideo = true;
-            }
+            // if (i === "mp4") {
+            //     isVideo = true;
+            // }
 
-            console.log(isVideo, itemArr, i)
+            console.log(isVideo, itemArr)
             return (
                 <>
                     <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
-                        {isVideo ?
+                        {false ?
                             <CardActionArea>
                                 <CardMedia
                                     component="video"
