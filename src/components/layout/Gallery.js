@@ -60,7 +60,7 @@ export default class Gallery extends Component {
         };
 
         const card = (item, index) => {
-            const isVideo = item.toString().split(".").at(-1) === "mp4";
+            const isVideo = item.split(".").at(-1) === "mp4";
             return (
                 <>
                     <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
@@ -107,9 +107,9 @@ export default class Gallery extends Component {
                             onChangeIndex={handleStepChange}
                             enableMouseEvents
                         >
-                            {currentGallery.map((item, index) => {
+                            {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
                                 return (
-                                    item.toString().split(".").at(-1) === "mp4" ?
+                                    item.split(".").at(-1) === "mp4" ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
@@ -120,11 +120,11 @@ export default class Gallery extends Component {
                                         /> : <img key={`c-${item}-${index}`} className="photo-modal-content " src={item} alt="img" />
 
                                 )
-                            })}
+                            }) : null}
                         </SwipeableViews>
                     </Box>
                 </Modal>
-                {currentGallery.map((row, rowIndex) => {
+                {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
                         <Zoom key={`z-${row}-${rowIndex}`} in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
                             <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
@@ -132,8 +132,7 @@ export default class Gallery extends Component {
                             </div>
                         </Zoom>
                     )
-                })
-                }
+                }) : null}
             </>
         )
     }
