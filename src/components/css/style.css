@@ -12,6 +12,7 @@
 
 .content-container {
     background-color: white;
+    display: inline-block;
 }
 
 .footer-container {

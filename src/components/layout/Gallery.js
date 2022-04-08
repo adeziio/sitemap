@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Card, CardActionArea, CardMedia, DialogContent, DialogContentText, Dialog, DialogTitle, IconButton } from '@mui/material';
-import { CloseOutlined } from '@mui/icons-material';
+import { Card, CardActionArea, CardMedia, } from '@mui/material';
 import ImgGallery from "../data/ImgGallery";
 import GifGallery from "../data/GifGallery";
 import VidGallery from "../data/VidGallery";
-import SwipeableViews from 'react-swipeable-views';
+import FocusedView from './FocusedView';
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            photoModal: false,
+            isFocusedView: false,
             activeStep: 0
         }
     }
@@ -21,16 +20,16 @@ export default class Gallery extends Component {
         })
     }
 
-    togglePhotoModal = (item, index) => {
+    toggleFocusedView = (index) => {
         this.setState((prevState) => ({
-            photoModal: !prevState.photoModal,
-            activeStep: index
+            isFocusedView: !prevState.isFocusedView,
+            activeStep: index ? index : prevState.activeStep
         }))
     }
 
     render() {
         const { currentFilter } = this.props;
-        const { photoModal, activeStep } = this.state;
+        const { isFocusedView, activeStep } = this.state;
 
         let currentGallery = [];
 
@@ -52,7 +51,7 @@ export default class Gallery extends Component {
             let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
                 <>
-                    <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
+                    <Card sx={{ m: 1, height: "100%" }} elevation={5} onClick={() => { this.toggleFocusedView(index) }}>
                         {isVideo ?
                             <CardActionArea>
                                 <CardMedia
@@ -78,50 +77,12 @@ export default class Gallery extends Component {
 
         return (
             <>
-                <Dialog
-                    sx={{ width: "100vw" }}
-                    open={photoModal}
-                    onClose={this.togglePhotoModal}
-                >
-                    <DialogTitle sx={{ m: 0, p: 1 }} className="dark-bg" >
-                        {photoModal ? (
-                            <IconButton
-                                aria-label="close"
-                                onClick={this.togglePhotoModal}
-                                sx={{
-                                    color: "white",
-                                }}
-                            >
-                                <CloseOutlined />
-                            </IconButton>
-                        ) : null}
-                    </DialogTitle>
-                    <DialogContent className="dark-bg">
-                        <DialogContentText >
-                            <SwipeableViews
-                                className='photo-modal-box'
-                                axis={'x'}
-                                index={Number(activeStep)}
-                                enableMouseEvents
-                            >
-                                {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
-                                    let itemArr = item.split(".");
-                                    let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
-                                    return (isVideo ?
-                                        <CardMedia
-                                            key={`c-${item}-${index}`}
-                                            className="photo-modal-content "
-                                            component="video"
-                                            width="100%"
-                                            controls
-                                            image={item}
-                                        /> : <img key={`c-${item}-${index}`} className="photo-modal-content " src={item} alt="img" />
-                                    )
-                                }) : null}
-                            </SwipeableViews>
-                        </DialogContentText>
-                    </DialogContent>
-                </Dialog>
+                <FocusedView
+                    currentGallery={currentGallery}
+                    isFocusedView={isFocusedView}
+                    toggleFocusedView={this.toggleFocusedView}
+                    activeStep={activeStep}
+                />
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
                         <div key={`z-${row}-${rowIndex}`} style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
@@ -129,7 +90,9 @@ export default class Gallery extends Component {
                         </div>
 
                     )
-                }) : null}
+                }) :
+                    null
+                }
             </>
         )
     }

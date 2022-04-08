@@ -10,7 +10,6 @@ export default class About extends Component {
     }
 
     render() {
-
         return (
             <>
                 <Grid container spacing={2}>
