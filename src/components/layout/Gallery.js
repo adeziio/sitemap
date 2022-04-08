@@ -52,7 +52,7 @@ export default class Gallery extends Component {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: "60%",
+            width: "90%",
             height: "70%",
             bgcolor: 'black',
             boxShadow: 24,
@@ -60,19 +60,13 @@ export default class Gallery extends Component {
         };
 
         const card = (item, index) => {
-            let isVideo = false;
+
             let itemArr = item.split(".");
-            // let i = itemArr.at(-1);
-
-            // if (i === "mp4") {
-            //     isVideo = true;
-            // }
-
-            console.log(isVideo, itemArr)
+            let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
                 <>
                     <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
-                        {false ?
+                        {isVideo ?
                             <CardActionArea>
                                 <CardMedia
                                     component="video"
@@ -116,10 +110,10 @@ export default class Gallery extends Component {
                             enableMouseEvents
                         >
                             {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
-                                console.log(item, typeof item)
-                                // let isVideo = typeof item === 'string' ? item.split(".").at(-1) === "mp4" : false;
+                                let itemArr = item.split(".");
+                                let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
                                 return (
-                                    false ?
+                                    isVideo ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
@@ -137,7 +131,7 @@ export default class Gallery extends Component {
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
                         <Zoom key={`z-${row}-${rowIndex}`} in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
-                            <div style={{ width: "100%", maxWidth: "300px", display: "inline-block" }}>
+                            <div style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
                                 {card(row, rowIndex)}
                             </div>
                         </Zoom>

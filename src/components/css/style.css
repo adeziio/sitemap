@@ -7,15 +7,11 @@
 }
 
 .header-container {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .content-container {
     background-color: white;
-    left: 0;
-    right: 0;
-    margin: auto;
-    padding: 1rem;
 }
 
 .footer-container {
@@ -27,6 +23,7 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    /* margin: -2rem; */
     /* for debugging */
     /* border: 1px solid red;
     background: orange; */
