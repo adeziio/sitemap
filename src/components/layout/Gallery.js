@@ -60,7 +60,15 @@ export default class Gallery extends Component {
         };
 
         const card = (item, index) => {
-            const isVideo = item.split(".").at(-1) === "mp4";
+            let isVideo = false;
+            let itemArr = item.split(".");
+            let i = itemArr.at(-1);
+
+            if (i === "mp4") {
+                isVideo = true;
+            }
+
+            console.log(isVideo, itemArr, i)
             return (
                 <>
                     <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
@@ -111,7 +119,7 @@ export default class Gallery extends Component {
                                 console.log(item, typeof item)
                                 // let isVideo = typeof item === 'string' ? item.split(".").at(-1) === "mp4" : false;
                                 return (
-                                    true ?
+                                    false ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
