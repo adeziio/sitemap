@@ -60,7 +60,7 @@ export default class Gallery extends Component {
         };
 
         const card = (item, index) => {
-            const isVideo = item.split(".").at(-1) === "mp4";
+            const isVideo = item.toString().split(".").at(-1) === "mp4";
             return (
                 <>
                     <Card sx={{ m: 1, height: "100%", transition: "transform 200ms ease-in-out" }} elevation={5} onClick={() => { this.togglePhotoModal(item, index) }}>
@@ -103,14 +103,13 @@ export default class Gallery extends Component {
                         <SwipeableViews
                             className='photo-modal-box'
                             axis={'x'}
-                            index={activeStep}
+                            index={Number(activeStep)}
                             onChangeIndex={handleStepChange}
                             enableMouseEvents
                         >
                             {currentGallery.map((item, index) => {
                                 return (
-
-                                    item.split(".").at(-1) === "mp4" ?
+                                    item.toString().split(".").at(-1) === "mp4" ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
