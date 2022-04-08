@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Typography, Grid, CardMedia, Grow } from '@mui/material';
+import { Typography, Grid, CardMedia } from '@mui/material';
 import image from "./../logo/project-img.png";
 
 export default class About extends Component {
@@ -15,19 +15,13 @@ export default class About extends Component {
             <>
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
-                        <Grow
-                            in={true}
-                            style={{ transformOrigin: '0 0 0' }}
-                            {...(true ? { timeout: (1000) } : {})}
-                        >
-                            <div style={{ width: "100%" }}>
-                                <CardMedia
-                                    component="img"
-                                    image={image}
-                                    alt={"profile-pic"}
-                                />
-                            </div>
-                        </Grow>
+                        <div style={{ width: "100%" }}>
+                            <CardMedia
+                                component="img"
+                                image={image}
+                                alt={"profile-pic"}
+                            />
+                        </div>
                     </Grid>
                     <Grid item xs={8} >
                         <Typography variant="h5" color="text.primary" fontSize="1rem">

@@ -38,3 +38,8 @@
     margin: auto;
     display: flex;
 }
+
+.dark-bg {
+    color: white;
+    background-color: black;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Zoom, Card, CardActionArea, CardMedia, Modal, Box } from '@mui/material';
+import { Card, CardActionArea, CardMedia, DialogContent, DialogContentText, Dialog, DialogTitle, IconButton } from '@mui/material';
+import { CloseOutlined } from '@mui/icons-material';
 import ImgGallery from "../data/ImgGallery";
 import GifGallery from "../data/GifGallery";
 import VidGallery from "../data/VidGallery";
@@ -32,7 +33,6 @@ export default class Gallery extends Component {
         const { photoModal, activeStep } = this.state;
 
         let currentGallery = [];
-        let growCounter = 0;
 
         if (currentFilter === "All") {
             currentGallery = ImgGallery.concat(GifGallery).concat(VidGallery);
@@ -47,20 +47,7 @@ export default class Gallery extends Component {
             currentGallery = GifGallery;
         }
 
-        const photoModalStyle = {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: "90%",
-            height: "70%",
-            bgcolor: 'black',
-            boxShadow: 24,
-            p: 4,
-        };
-
         const card = (item, index) => {
-
             let itemArr = item.split(".");
             let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
@@ -89,31 +76,38 @@ export default class Gallery extends Component {
             )
         }
 
-        const handleStepChange = (step) => {
-            this.setActiveStep(step);
-        };
-
         return (
             <>
-                <Modal
+                <Dialog
+                    sx={{ width: "100vw" }}
                     open={photoModal}
                     onClose={this.togglePhotoModal}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
                 >
-                    <Box sx={photoModalStyle}>
-                        <SwipeableViews
-                            className='photo-modal-box'
-                            axis={'x'}
-                            index={Number(activeStep)}
-                            onChangeIndex={handleStepChange}
-                            enableMouseEvents
-                        >
-                            {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
-                                let itemArr = item.split(".");
-                                let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
-                                return (
-                                    isVideo ?
+                    <DialogTitle sx={{ m: 0, p: 1 }} className="dark-bg" >
+                        {photoModal ? (
+                            <IconButton
+                                aria-label="close"
+                                onClick={this.togglePhotoModal}
+                                sx={{
+                                    color: "white",
+                                }}
+                            >
+                                <CloseOutlined />
+                            </IconButton>
+                        ) : null}
+                    </DialogTitle>
+                    <DialogContent className="dark-bg">
+                        <DialogContentText >
+                            <SwipeableViews
+                                className='photo-modal-box'
+                                axis={'x'}
+                                index={Number(activeStep)}
+                                enableMouseEvents
+                            >
+                                {currentGallery.length !== 0 ? currentGallery.map((item, index) => {
+                                    let itemArr = item.split(".");
+                                    let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
+                                    return (isVideo ?
                                         <CardMedia
                                             key={`c-${item}-${index}`}
                                             className="photo-modal-content "
@@ -122,19 +116,18 @@ export default class Gallery extends Component {
                                             controls
                                             image={item}
                                         /> : <img key={`c-${item}-${index}`} className="photo-modal-content " src={item} alt="img" />
-
-                                )
-                            }) : null}
-                        </SwipeableViews>
-                    </Box>
-                </Modal>
+                                    )
+                                }) : null}
+                            </SwipeableViews>
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
-                        <Zoom key={`z-${row}-${rowIndex}`} in={true} style={{ transitionDelay: `${growCounter += 100}ms` }}>
-                            <div style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
-                                {card(row, rowIndex)}
-                            </div>
-                        </Zoom>
+                        <div key={`z-${row}-${rowIndex}`} style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
+                            {card(row, rowIndex)}
+                        </div>
+
                     )
                 }) : null}
             </>
