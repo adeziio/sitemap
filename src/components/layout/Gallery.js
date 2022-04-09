@@ -51,7 +51,7 @@ export default class Gallery extends Component {
             let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
                 <>
-                    <Card sx={{ m: 1, height: "100%" }} elevation={5} onClick={() => { this.toggleFocusedView(index) }}>
+                    <Card key={`z-${item}-${index}`} sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }} elevation={5} onClick={() => { this.toggleFocusedView(index) }}>
                         {isVideo ?
                             <CardActionArea>
                                 <CardMedia
@@ -85,9 +85,9 @@ export default class Gallery extends Component {
                 /> */}
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
-                        <div key={`z-${row}-${rowIndex}`} style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
-                            {card(row, rowIndex)}
-                        </div>
+
+                        card(row, rowIndex)
+
 
                     )
                 }) :
