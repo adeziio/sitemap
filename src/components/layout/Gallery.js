@@ -77,12 +77,12 @@ export default class Gallery extends Component {
 
         return (
             <>
-                <FocusedView
+                {/* <FocusedView
                     currentGallery={currentGallery}
                     isFocusedView={isFocusedView}
                     toggleFocusedView={this.toggleFocusedView}
                     activeStep={activeStep}
-                />
+                /> */}
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
                         <div key={`z-${row}-${rowIndex}`} style={{ width: "100%", maxWidth: "400px", display: "inline-block" }}>
