@@ -3,33 +3,16 @@ import { Card, CardActionArea, CardMedia, } from '@mui/material';
 import ImgGallery from "../data/ImgGallery";
 import GifGallery from "../data/GifGallery";
 import VidGallery from "../data/VidGallery";
-import FocusedView from './FocusedView';
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isFocusedView: false,
-            activeStep: 0
         }
-    }
-
-    setActiveStep = (step) => {
-        this.setState({
-            activeStep: step
-        })
-    }
-
-    toggleFocusedView = (index) => {
-        this.setState((prevState) => ({
-            isFocusedView: !prevState.isFocusedView,
-            activeStep: index ? index : prevState.activeStep
-        }))
     }
 
     render() {
         const { currentFilter } = this.props;
-        const { isFocusedView, activeStep } = this.state;
 
         let currentGallery = [];
 
@@ -79,12 +62,6 @@ export default class Gallery extends Component {
 
         return (
             <>
-                {/* <FocusedView
-                    currentGallery={currentGallery}
-                    isFocusedView={isFocusedView}
-                    toggleFocusedView={this.toggleFocusedView}
-                    activeStep={activeStep}
-                /> */}
                 {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
                     return (
 

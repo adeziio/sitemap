@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { Button, FormControl } from '@mui/material';
+import { Button, FormControl, Alert } from '@mui/material';
 import { upload } from "./../api/BackendAPI";
 
 export default class Upload extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            file: undefined
+            file: undefined,
+            resMsg: ""
         }
+    }
+
+    setResMsg = (resMsg) => {
+        this.setState({
+            resMsg: resMsg
+        })
     }
 
     handleFileSelect = (event) => {
         this.setState({
-            file: event.target.files[0]
+            file: event.target.files[0],
+            resMsg: ""
         })
     }
 
@@ -22,6 +30,7 @@ export default class Upload extends Component {
             console.log("Submitting:", file)
             const result = await upload(file);
             console.log("Got back:", result)
+            this.setResMsg(result.status);
         }
         else {
             console.log("No file selected")
@@ -29,6 +38,8 @@ export default class Upload extends Component {
     }
 
     render() {
+        const { resMsg } = this.state;
+
         return (
             <>
                 <FormControl>
@@ -51,7 +62,10 @@ export default class Upload extends Component {
                     >
                         Submit
                     </Button>
+
                 </FormControl>
+
+                {resMsg === "Success" ? <Alert sx={{ marginTop: 1 }} severity="success">{resMsg}</Alert> : null}
             </>
         )
     }
