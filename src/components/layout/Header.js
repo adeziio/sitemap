@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Tooltip, MenuItem } from '@mui/material';
-import { MenuOutlined, Stars } from '@mui/icons-material';
+import { MenuOutlined, Stars, AutoAwesome } from '@mui/icons-material';
 import logo from "./../logo/logo.png"
 
 export default class Header extends Component {
@@ -54,7 +54,7 @@ export default class Header extends Component {
     render() {
         const { anchorElLeft, anchorElRight } = this.state;
 
-        const filters = ['Image', 'Video', 'Gif'];
+        const filters = ['Upload', 'Image', 'Video', 'Gif'];
         const pages = ['About', 'Contact'];
 
         return (
@@ -69,6 +69,7 @@ export default class Header extends Component {
                                 sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                             >
                                 <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                                <AutoAwesome />
                             </Typography>
 
                             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -114,6 +115,7 @@ export default class Header extends Component {
                                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                             >
                                 <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                                <AutoAwesome />
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                                 {filters.map((filter, index) => (

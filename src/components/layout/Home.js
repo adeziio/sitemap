@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../css/style.css';
 import Header from "./Header";
+import Upload from "./Upload";
 import Gallery from "./Gallery";
 import About from "./About";
 import Contact from "./Contact";
@@ -35,11 +36,15 @@ export default class Home extends Component {
                 <div className="header-container">
                     <Header setCurrentPage={this.setCurrentPage} setCurrentFilter={this.setCurrentFilter} />
                 </div>
+
                 <div className="content-container">
-                    {currentPage === "Gallery" ? <Gallery currentFilter={currentFilter} /> : null}
-                    {currentPage === "About" ? <About /> : null}
-                    {currentPage === "Contact" ? <Contact /> : null}
+                    {currentPage === "About" ? <About /> : currentPage === "Contact" ? <Contact /> : currentFilter === "Upload" ? <Upload /> : null}
                 </div>
+
+                <div className="gallery-container">
+                    {currentPage === "Gallery" ? <Gallery currentFilter={currentFilter} /> : null}
+                </div>
+
                 <div className="footer-container">
                     <Footer />
                 </div>
