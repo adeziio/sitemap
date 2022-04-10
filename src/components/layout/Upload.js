@@ -27,13 +27,11 @@ export default class Upload extends Component {
     handleSubmit = async () => {
         const { file } = this.state;
         if (file) {
-            console.log("Submitting:", file)
             const result = await upload(file);
-            console.log("Got back:", result)
             this.setResMsg(result.status);
         }
         else {
-            console.log("No file selected")
+            this.setResMsg("No file selected");
         }
     }
 
@@ -48,10 +46,10 @@ export default class Upload extends Component {
                         component="label"
                     >
                         <input
+                            name="input"
                             type="file"
                             accept="image/*"
                             onChange={this.handleFileSelect}
-                        // hidden
                         />
                     </Button>
                     <Button
@@ -62,10 +60,11 @@ export default class Upload extends Component {
                     >
                         Submit
                     </Button>
-
                 </FormControl>
 
                 {resMsg === "Success" ? <Alert sx={{ marginTop: 1 }} severity="success">{resMsg}</Alert> : null}
+                {resMsg === "No file selected" ? <Alert sx={{ marginTop: 1 }} severity="warning">{resMsg}</Alert> : null}
+                {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{resMsg}</Alert> : null}
             </>
         )
     }

@@ -1,41 +1,45 @@
 import React, { Component } from 'react';
 import { Card, CardActionArea, CardMedia, } from '@mui/material';
-import ImgGallery from "../data/ImgGallery";
-import GifGallery from "../data/GifGallery";
-import VidGallery from "../data/VidGallery";
+import { gallery, extract } from "./../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            gallery: []
         }
     }
 
+    componentDidMount = () => {
+        console.log("MOUNT")
+        this.getGallery();
+    }
+
+    getGallery = async () => {
+        let newGallery = [];
+        let resGallery = await gallery();
+        if (resGallery) {
+            for (let i = 0; i < resGallery.gallery.length; i++) {
+                let resExtract = await extract(resGallery.gallery[i]);
+                newGallery.push(resExtract.src);
+            }
+        }
+
+        this.setState({
+            gallery: newGallery
+        })
+    }
+
     render() {
-        const { currentFilter } = this.props;
-
-        let currentGallery = [];
-
-        if (currentFilter === "All") {
-            currentGallery = ImgGallery.concat(GifGallery).concat(VidGallery);
-        }
-        else if (currentFilter === "Image") {
-            currentGallery = ImgGallery;
-        }
-        else if (currentFilter === "Video") {
-            currentGallery = VidGallery;
-        }
-        else if (currentFilter === "Gif") {
-            currentGallery = GifGallery;
-        }
+        const { gallery } = this.state;
 
         const card = (item, index) => {
-            let itemArr = item.split(".");
-            let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
+            // let itemArr = item.split(".");
+            // let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
                 <>
-                    <Card sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }} elevation={5} onClick={() => { this.toggleFocusedView(index) }}>
-                        {isVideo ?
+                    <Card key={`z-${item}-${index}`} sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }} elevation={5} >
+                        {false ?
                             <CardActionArea>
                                 <CardMedia
                                     component="video"
@@ -53,6 +57,7 @@ export default class Gallery extends Component {
                                 />
                             </CardActionArea>
                         }
+                        {/* <img src={item} /> */}
                     </Card>
                 </>
             )
@@ -60,11 +65,9 @@ export default class Gallery extends Component {
 
         return (
             <>
-                {currentGallery.length !== 0 ? currentGallery.map((row, rowIndex) => {
+                {gallery.length !== 0 ? gallery.map((item, index) => {
                     return (
-                        <a key={`z-${row}-${rowIndex}`} href={row}>
-                            {card(row, rowIndex)}
-                        </a>
+                        card(item, index)
                     )
                 }) :
                     null

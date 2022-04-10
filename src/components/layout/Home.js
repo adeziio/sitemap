@@ -11,38 +11,31 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: "Gallery",
-            currentFilter: "All"
+            page: "Gallery"
         }
     }
 
-    setCurrentPage = (page) => {
+    setPage = (page) => {
         this.setState({
-            currentPage: page
-        })
-    }
-
-    setCurrentFilter = (filter) => {
-        this.setState({
-            currentFilter: filter
+            page: page
         })
     }
 
     render() {
-        const { currentPage, currentFilter } = this.state;
+        const { page } = this.state;
 
         return (
             <div >
                 <div className="header-container">
-                    <Header setCurrentPage={this.setCurrentPage} setCurrentFilter={this.setCurrentFilter} />
+                    <Header setPage={this.setPage} />
                 </div>
 
                 <div className="content-container">
-                    {currentPage === "About" ? <About /> : currentPage === "Contact" ? <Contact /> : currentFilter === "Upload" ? <Upload /> : null}
+                    {page === "Upload" ? <Upload /> : page === "About" ? <About /> : page === "Contact" ? <Contact /> : null}
                 </div>
 
                 <div className="gallery-container">
-                    {currentPage === "Gallery" ? <Gallery currentFilter={currentFilter} /> : null}
+                    {page === "Gallery" ? <Gallery /> : null}
                 </div>
 
                 <div className="footer-container">

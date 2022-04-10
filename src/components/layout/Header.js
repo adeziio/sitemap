@@ -25,13 +25,8 @@ export default class Header extends Component {
     }
 
     setPage = (page) => {
-        this.props.setCurrentPage(page);
+        this.props.setPage(page);
         this.handleCloseRightMenu();
-    }
-
-    setFilter = (filter) => {
-        this.props.setCurrentPage("Gallery");
-        this.props.setCurrentFilter(filter);
         this.handleCloseLeftMenu();
     }
 
@@ -54,8 +49,8 @@ export default class Header extends Component {
     render() {
         const { anchorElLeft, anchorElRight } = this.state;
 
-        const filters = ['Upload', 'Image', 'Video', 'Gif'];
-        const pages = ['About', 'Contact'];
+        const leftOption = ['Upload'];
+        const rightOption = ['About', 'Contact'];
 
         return (
             <>
@@ -68,7 +63,7 @@ export default class Header extends Component {
                                 component="div"
                                 sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                             >
-                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setPage("Gallery"); }} />
                                 <AutoAwesome />
                             </Typography>
 
@@ -101,9 +96,9 @@ export default class Header extends Component {
                                         display: { xs: 'block', md: 'none' },
                                     }}
                                 >
-                                    {filters.map((filter, index) => (
-                                        <MenuItem key={`f-${filter}-${index}`} onClick={() => { this.setFilter(filter) }}>
-                                            <Typography textAlign="center">{filter}</Typography>
+                                    {leftOption.map((option, index) => (
+                                        <MenuItem key={`f-${option}-${index}`} onClick={() => { this.setPage(option); }}>
+                                            <Typography textAlign="center">{option}</Typography>
                                         </MenuItem>
                                     ))}
                                 </Menu>
@@ -114,17 +109,17 @@ export default class Header extends Component {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                             >
-                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setFilter("All") }} />
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setPage("Gallery") }} />
                                 <AutoAwesome />
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                                {filters.map((filter, index) => (
+                                {leftOption.map((option, index) => (
                                     <Button
-                                        key={`f2-${filter}-${index}`}
-                                        onClick={() => { this.setFilter(filter) }}
+                                        key={`f2-${option}-${index}`}
+                                        onClick={() => { this.setPage(option) }}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
-                                        {filter}
+                                        {option}
                                     </Button>
                                 ))}
                             </Box>
@@ -151,7 +146,7 @@ export default class Header extends Component {
                                     open={Boolean(anchorElRight)}
                                     onClose={this.handleCloseRightMenu}
                                 >
-                                    {pages.map((page, index) => (
+                                    {rightOption.map((page, index) => (
                                         <MenuItem key={`p-${page}-${index}`} onClick={() => { this.setPage(page) }}>
                                             <Typography textAlign="center" >{page}</Typography>
                                         </MenuItem>
