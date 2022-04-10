@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Card, CardActionArea, CardMedia, } from '@mui/material';
+import { Card, CardActionArea, CardMedia, CircularProgress } from '@mui/material';
 import { gallery, extract } from "./../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gallery: []
+            gallery: [],
+            isLoading: true
         }
     }
 
     componentDidMount = () => {
-        console.log("MOUNT")
         this.getGallery();
     }
 
@@ -26,7 +26,8 @@ export default class Gallery extends Component {
         }
 
         this.setState({
-            gallery: newGallery
+            gallery: newGallery,
+            mounted: true
         })
     }
 
@@ -37,29 +38,27 @@ export default class Gallery extends Component {
             // let itemArr = item.split(".");
             // let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
-                <>
-                    <Card key={`z-${item}-${index}`} sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }} elevation={5} >
-                        {false ?
-                            <CardActionArea>
-                                <CardMedia
-                                    component="video"
-                                    width="100%"
-                                    controls
-                                    image={item}
-                                />
-                            </CardActionArea> :
-                            <CardActionArea>
-                                <CardMedia
-                                    component="img"
-                                    width="100%"
-                                    image={item}
-                                    alt={"img"}
-                                />
-                            </CardActionArea>
-                        }
-                        {/* <img src={item} /> */}
-                    </Card>
-                </>
+                <Card key={`z-${item}-${index}`} sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }} elevation={5} >
+                    {false ?
+                        <CardActionArea>
+                            <CardMedia
+                                component="video"
+                                width="100%"
+                                controls
+                                image={item}
+                            />
+                        </CardActionArea> :
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                width="100%"
+                                image={item}
+                                alt={"img"}
+                            />
+                        </CardActionArea>
+                    }
+                    {/* <img src={item} /> */}
+                </Card>
             )
         }
 
@@ -70,7 +69,7 @@ export default class Gallery extends Component {
                         card(item, index)
                     )
                 }) :
-                    null
+                    <CircularProgress />
                 }
             </>
         )
