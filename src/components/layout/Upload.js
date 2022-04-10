@@ -48,7 +48,7 @@ export default class Upload extends Component {
                         <input
                             name="input"
                             type="file"
-                            accept="image/*"
+                            accept="image/jpeg, image/png"
                             onChange={this.handleFileSelect}
                         />
                     </Button>
