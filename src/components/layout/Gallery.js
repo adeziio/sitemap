@@ -40,7 +40,6 @@ export default class Gallery extends Component {
         const card = (src, index) => {
             return (
                 <Card
-                    key={`z-${index}`}
                     sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
                     elevation={5}
                 >
@@ -73,7 +72,7 @@ export default class Gallery extends Component {
                     >
                         {gallery.map((item, index) => {
                             return (
-                                <ImageListItem key={item.img}>
+                                <ImageListItem key={`z-${index}`}>
                                     {card(item, index)}
                                 </ImageListItem>
                             )

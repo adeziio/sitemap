@@ -34,7 +34,6 @@ export default class Upload extends Component {
             else {
                 this.setResMsg("Error");
             }
-
         }
         else {
             this.setResMsg("No file selected");
