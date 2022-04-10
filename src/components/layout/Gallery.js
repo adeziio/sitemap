@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Card, CardActionArea, CardMedia, CircularProgress, ImageList, ImageListItem } from '@mui/material';
+import { Alert, Card, CardActionArea, CardMedia, CircularProgress, ImageList, ImageListItem } from '@mui/material';
 import { gallery, extract } from "./../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gallery: []
+            gallery: [],
+            resMsg: ""
         }
     }
 
@@ -26,18 +27,23 @@ export default class Gallery extends Component {
                     }
                 }
             }
+            this.setState({
+                gallery: newGallery
+            })
+        }
+        else {
+            this.setState({
+                resMsg: "Error"
+            })
         }
 
-        this.setState({
-            gallery: newGallery,
-            mounted: true
-        })
+
     }
 
     render() {
-        const { gallery } = this.state;
+        const { gallery, resMsg } = this.state;
 
-        const card = (src, index) => {
+        const card = (src) => {
             return (
                 <Card
                     sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
@@ -73,13 +79,14 @@ export default class Gallery extends Component {
                         {gallery.map((item, index) => {
                             return (
                                 <ImageListItem key={`z-${index}`}>
-                                    {card(item, index)}
+                                    {card(item)}
                                 </ImageListItem>
                             )
                         })}
                     </ImageList>
-                    :
-                    <CircularProgress />
+                    : resMsg === "Error" ?
+                        <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to load gallery`}</Alert>
+                        : <CircularProgress />
                 }
             </>
         )
