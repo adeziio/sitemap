@@ -20,7 +20,9 @@ export default class Gallery extends Component {
         if (resGallery) {
             for (let i = 0; i < resGallery.gallery.length; i++) {
                 let resExtract = await extract(resGallery.gallery[i]);
-                newGallery.push(resExtract.src);
+                if (resExtract.status === "Success") {
+                    newGallery.push(resExtract.src);
+                }
             }
         }
 
