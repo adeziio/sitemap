@@ -28,7 +28,13 @@ export default class Upload extends Component {
         const { file } = this.state;
         if (file) {
             const result = await upload(file);
-            this.setResMsg(result.status);
+            if (result) {
+                this.setResMsg(result.status);
+            }
+            else {
+                this.setResMsg("Error");
+            }
+
         }
         else {
             this.setResMsg("No file selected");
