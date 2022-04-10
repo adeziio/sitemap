@@ -5,7 +5,9 @@ export const gallery = async () => {
     }).catch(err => {
         return false;
     })
-    return await res.json();
+    if (res) {
+        return await res.json();
+    }
 }
 
 export const upload = async (file) => {
@@ -18,7 +20,9 @@ export const upload = async (file) => {
     }).catch(err => {
         return false;
     })
-    return await res.json();
+    if (res) {
+        return await res.json();
+    }
 }
 
 export const extract = async (key) => {
@@ -27,5 +31,7 @@ export const extract = async (key) => {
     }).catch(err => {
         return false;
     })
-    return await res.json();
+    if (res) {
+        return await res.json();
+    }
 }
