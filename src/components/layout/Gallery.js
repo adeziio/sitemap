@@ -36,8 +36,6 @@ export default class Gallery extends Component {
                 resMsg: "Error"
             })
         }
-
-
     }
 
     render() {
