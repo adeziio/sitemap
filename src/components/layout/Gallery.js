@@ -38,32 +38,20 @@ export default class Gallery extends Component {
         const { gallery } = this.state;
 
         const card = (src, index) => {
-            // let itemArr = item.split(".");
-            // let isVideo = itemArr[itemArr.length - 1] === "mp4" ? true : false;
             return (
                 <Card
                     key={`z-${index}`}
                     sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
                     elevation={5}
                 >
-                    {false ?
-                        <CardActionArea>
-                            <CardMedia
-                                component="video"
-                                width="100%"
-                                controls
-                                image={src}
-                            />
-                        </CardActionArea> :
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                width="100%"
-                                image={src}
-                                alt={"img"}
-                            />
-                        </CardActionArea>
-                    }
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            width="100%"
+                            image={src}
+                            alt={"img"}
+                        />
+                    </CardActionArea>
                 </Card>
             )
         }
@@ -73,8 +61,6 @@ export default class Gallery extends Component {
                 {gallery.length !== 0 ?
                     <ImageList
                         variant="masonry"
-                        // cols={4}
-                        // gap={2}
                         sx={{
                             columnCount: {
                                 xs: '1 !important',
