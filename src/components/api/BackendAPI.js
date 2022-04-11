@@ -2,6 +2,9 @@
 export const gallery = async () => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gallery`, {
         "method": "GET",
+        "headers": {
+            'stargallery-api-key': process.env.REACT_APP_STARGALLERY_API_KEY
+        }
     }).catch(err => {
         return false;
     })
@@ -16,6 +19,9 @@ export const upload = async (file) => {
 
     const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/upload`, {
         "method": "POST",
+        "headers": {
+            'stargallery-api-key': process.env.REACT_APP_STARGALLERY_API_KEY
+        },
         "body": formData
     }).catch(err => {
         return false;
@@ -27,7 +33,10 @@ export const upload = async (file) => {
 
 export const extract = async (key) => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/extract?key=${key}`, {
-        "method": "GET"
+        "method": "GET",
+        "headers": {
+            'stargallery-api-key': process.env.REACT_APP_STARGALLERY_API_KEY
+        }
     }).catch(err => {
         return false;
     })
