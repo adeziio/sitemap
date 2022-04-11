@@ -38,6 +38,12 @@ export default class Gallery extends Component {
         }
     }
 
+    focusedView = (src) => {
+        const newTab = window.open();
+        newTab?.document.write(`<!DOCTYPE html><head><title></title></head><body><img src="${src}" width="100%" height="auto" ></body></html>`);
+        newTab?.document.close();
+    }
+
     render() {
         const { gallery, resMsg } = this.state;
 
@@ -46,6 +52,7 @@ export default class Gallery extends Component {
                 <Card
                     sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
                     elevation={5}
+                    onClick={() => this.focusedView(src)}
                 >
                     <CardActionArea>
                         <CardMedia
