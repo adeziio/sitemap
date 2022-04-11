@@ -32,7 +32,7 @@ export default class Upload extends Component {
                 this.setResMsg(result.status);
             }
             else {
-                this.setResMsg("Error");
+                this.setResMsg("Failed");
             }
         }
         else {
@@ -69,7 +69,7 @@ export default class Upload extends Component {
 
                 {resMsg === "Success" ? <Alert sx={{ marginTop: 1 }} severity="success">{resMsg}</Alert> : null}
                 {resMsg === "No file selected" ? <Alert sx={{ marginTop: 1 }} severity="warning">{resMsg}</Alert> : null}
-                {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to upload`}</Alert> : null}
+                {resMsg === "Failed" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to upload`}</Alert> : null}
             </>
         )
     }

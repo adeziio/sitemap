@@ -33,7 +33,7 @@ export default class Gallery extends Component {
         }
         else {
             this.setState({
-                resMsg: "Error"
+                resMsg: "Failed"
             })
         }
     }
@@ -82,7 +82,7 @@ export default class Gallery extends Component {
                             )
                         })}
                     </ImageList>
-                    : resMsg === "Error" ?
+                    : resMsg === "Failed" ?
                         <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to load gallery`}</Alert>
                         : <CircularProgress />
                 }
