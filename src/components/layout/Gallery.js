@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Alert, Card, CardActionArea, CardMedia, CircularProgress, ImageList, ImageListItem } from '@mui/material';
-import { gallery, extract } from "./../api/BackendAPI";
+import { Alert, CircularProgress, ImageList } from '@mui/material';
+import { gallery } from "./../api/BackendAPI";
+import GalleryPhoto from "./GalleryPhoto";
 
 export default class Gallery extends Component {
     constructor(props) {
@@ -20,19 +21,6 @@ export default class Gallery extends Component {
         let resGallery = await gallery();
         if (resGallery) {
             newGallery = resGallery.gallery;
-            for (let i = 0; i < resGallery.size; i++) {
-                let resExtract = await extract(resGallery.gallery[i].key);
-                if (resExtract) {
-                    if (resExtract.status === "Success") {
-                        let mimeType = 'image/*';
-                        let src = `data:${mimeType};base64,${resExtract.base64}`;
-                        newGallery[i] = {
-                            ...newGallery[i],
-                            "base64": src,
-                        };
-                    }
-                }
-            }
             this.setState({
                 gallery: newGallery
             })
@@ -53,25 +41,6 @@ export default class Gallery extends Component {
     render() {
         const { gallery, resMsg } = this.state;
 
-        const card = (item) => {
-            return (
-                <Card
-                    sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
-                    elevation={5}
-                    onClick={() => this.focusedView(item.base64, item.date)}
-                >
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            width="100%"
-                            image={item.base64}
-                            alt={"img"}
-                        />
-                    </CardActionArea>
-                </Card>
-            )
-        }
-
         return (
             <>
                 {gallery.length !== 0 ?
@@ -89,9 +58,7 @@ export default class Gallery extends Component {
                     >
                         {gallery.map((item) => {
                             return (
-                                <ImageListItem key={`${item.key}`}>
-                                    {card(item)}
-                                </ImageListItem>
+                                <GalleryPhoto item={item} />
                             )
                         })}
                     </ImageList>
