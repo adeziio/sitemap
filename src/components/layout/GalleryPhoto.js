@@ -73,12 +73,14 @@ export default class GalleryPhoto extends Component {
                     <>
                         <Dialog onClose={this.toggleDialog} open={dialog}>
                             <DialogTitle>Delete this photo?
-                                <Button sx={{ m: 1, backgroundColor: "#005b96" }} variant="contained" onClick={() => this.delete(key)} autoFocus>
-                                    Yes
-                                </Button>
-                                <Button sx={{ m: 1, backgroundColor: "#005b96" }} variant="contained" onClick={this.toggleDialog} autoFocus>
-                                    No
-                                </Button>
+                                <DialogContent sx={{ display: "block", p: 0, m: 0 }}>
+                                    <Button sx={{ m: 1, backgroundColor: "#005b96" }} variant="contained" onClick={() => this.delete(key)} autoFocus>
+                                        Yes
+                                    </Button>
+                                    <Button sx={{ m: 1, backgroundColor: "#005b96" }} variant="contained" onClick={this.toggleDialog} autoFocus>
+                                        No
+                                    </Button>
+                                </DialogContent>
                             </DialogTitle>
                             <DialogContent>
                                 <CardMedia
