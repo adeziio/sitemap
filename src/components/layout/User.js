@@ -36,6 +36,9 @@ export default class User extends Component {
             if (password === process.env.REACT_APP_ADMIN_PASSWORD) {
                 this.props.setisAdmin(true);
             }
+            else {
+                this.setResMsg("Error");
+            }
         }
         else {
             this.setResMsg("Error");
