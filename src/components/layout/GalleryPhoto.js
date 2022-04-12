@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardActionArea, CardMedia, ImageListItem, CircularProgress } from '@mui/material';
+import { Card, CardActionArea, CardMedia, ImageListItem } from '@mui/material';
 import { extract } from "../api/BackendAPI";
 
 export default class GalleryPhoto extends Component {
@@ -67,7 +67,7 @@ export default class GalleryPhoto extends Component {
                             </CardActionArea>
                         </Card>
                     </ImageListItem>
-                    : <CircularProgress />
+                    : null
                 }
             </>
         )
