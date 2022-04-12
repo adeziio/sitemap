@@ -63,7 +63,6 @@ export default class User extends Component {
         const { user, resMsg } = this.state;
         const { isAdmin } = this.props;
 
-
         return (
             <>
                 {!isAdmin ?

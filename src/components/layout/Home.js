@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './../css/style.css';
 import Header from "./Header";
 import Upload from "./Upload";
+import Extract from "./Extract";
+import Delete from "./Delete";
 import Gallery from "./Gallery";
 import User from "./User";
 import About from "./About";
@@ -35,15 +37,17 @@ export default class Home extends Component {
         return (
             <div >
                 <div className="header-container">
-                    <Header setPage={this.setPage} />
+                    <Header setPage={this.setPage} isAdmin={isAdmin} />
                 </div>
 
                 <div className="content-container">
                     {page === "Upload" ? <Upload />
-                        : page === "About" ? <About />
-                            : page === "Contact" ? <Contact />
-                                : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
-                                    : null
+                        : page === "Extract" ? <Extract />
+                            : page === "Delete" ? <Delete />
+                                : page === "About" ? <About />
+                                    : page === "Contact" ? <Contact />
+                                        : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
+                                            : null
                     }
                 </div>
 

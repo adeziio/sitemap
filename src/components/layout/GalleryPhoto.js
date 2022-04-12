@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardActionArea, CardMedia, ImageListItem, Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
+import { Card, Alert, CardActionArea, CardMedia, ImageListItem, Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
 import { DeleteForever } from '@mui/icons-material';
 import { extractKey, deleteKey } from "../api/BackendAPI";
 
@@ -8,13 +8,21 @@ export default class GalleryPhoto extends Component {
         super(props);
         this.state = {
             base64: "",
-            dialog: false
+            dialog: false,
+            resMsg: ""
         }
+    }
+
+    setResMsg = (resMsg) => {
+        this.setState({
+            resMsg: resMsg
+        })
     }
 
     toggleDialog = () => {
         this.setState((prevState) => ({
-            dialog: !prevState.dialog
+            dialog: !prevState.dialog,
+            resMsg: ""
         }))
     }
 
@@ -47,10 +55,16 @@ export default class GalleryPhoto extends Component {
         let resDelete = await deleteKey(key);
         if (resDelete) {
             if (resDelete.status === "Success") {
+                this.toggleDialog();
                 this.props.getGallery();
             }
+            else {
+                this.setResMsg("Failed");
+            }
         }
-        this.toggleDialog();
+        else {
+            this.setResMsg("Failed");
+        }
     }
 
     focusedView = (src, date) => {
@@ -61,8 +75,7 @@ export default class GalleryPhoto extends Component {
 
     render() {
         const { item, isAdmin } = this.props;
-        const { base64, dialog } = this.state;
-
+        const { base64, dialog, resMsg } = this.state;
         const key = item.key;
         const date = item.date;
         const src = `data:image/*;base64,${base64}`;
@@ -80,6 +93,7 @@ export default class GalleryPhoto extends Component {
                                     <Button sx={{ m: 1, backgroundColor: "#005b96" }} variant="contained" onClick={this.toggleDialog} autoFocus>
                                         No
                                     </Button>
+                                    {resMsg === "Failed" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to delete`}</Alert> : null}
                                 </DialogContent>
                             </DialogTitle>
                             <DialogContent>
