@@ -19,20 +19,20 @@ export default class Gallery extends Component {
         let newGallery = [];
         let resGallery = await gallery();
         if (resGallery) {
-            for (let i = 0; i < resGallery.gallery.length; i++) {
-                // if (resGallery.gallery[i] === "dece8678e8e3930cc0737aeddd3f1027") {
-                let resExtract = await extract(resGallery.gallery[i]);
+            newGallery = resGallery.gallery;
+            for (let i = 0; i < resGallery.size; i++) {
+                let resExtract = await extract(resGallery.gallery[i].key);
                 if (resExtract) {
                     if (resExtract.status === "Success") {
-                        newGallery.push(resExtract.src);
+                        let mimeType = 'image/*';
+                        let src = `data:${mimeType};base64,${resExtract.base64}`;
+                        newGallery[i] = {
+                            ...newGallery[i],
+                            "base64": src,
+                        };
                     }
                 }
-                // }
             }
-            newGallery = newGallery
-                .map(value => ({ value, sort: Math.random() }))
-                .sort((a, b) => a.sort - b.sort)
-                .map(({ value }) => value)
             this.setState({
                 gallery: newGallery
             })
@@ -44,27 +44,27 @@ export default class Gallery extends Component {
         }
     }
 
-    focusedView = (src) => {
+    focusedView = (base64, date) => {
         const newTab = window.open();
-        newTab?.document.write(`<!DOCTYPE html><head><title></title></head><body><img src="${src}" width="100%" height="auto" ></body></html>`);
+        newTab?.document.write(`<!DOCTYPE html><head><title>${date}</title></head><body><img src="${base64}" width="100%" height="auto" ></body></html>`);
         newTab?.document.close();
     }
 
     render() {
         const { gallery, resMsg } = this.state;
 
-        const card = (src) => {
+        const card = (item) => {
             return (
                 <Card
                     sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
                     elevation={5}
-                    onClick={() => this.focusedView(src)}
+                    onClick={() => this.focusedView(item.base64, item.date)}
                 >
                     <CardActionArea>
                         <CardMedia
                             component="img"
                             width="100%"
-                            image={src}
+                            image={item.base64}
                             alt={"img"}
                         />
                     </CardActionArea>
@@ -87,9 +87,9 @@ export default class Gallery extends Component {
                             },
                         }}
                     >
-                        {gallery.map((item, index) => {
+                        {gallery.map((item) => {
                             return (
-                                <ImageListItem key={`z-${index}`}>
+                                <ImageListItem key={`${item.key}`}>
                                     {card(item)}
                                 </ImageListItem>
                             )
