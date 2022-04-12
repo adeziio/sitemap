@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Typography } from '@mui/material';
+import { Typography, Button } from '@mui/material';
+import { LinkedIn, GitHub, Instagram } from '@mui/icons-material';
 
 export default class Footer extends Component {
     constructor(props) {
@@ -12,8 +13,26 @@ export default class Footer extends Component {
 
         return (
             <>
-                <Typography variant="body2" color="text.secondary" fontSize="1rem">
-                    © 2022 Design & Build by Aden Tran.
+                <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
+                    © 2022 Aden Tran.
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
+                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://github.com/adeziio")}>
+                        <GitHub />
+                    </Button>
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
+                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.linkedin.com/in/aden-tran-aba695171")}>
+                        <LinkedIn />
+                    </Button>
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
+                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.instagram.com/adeziio")}>
+                        <Instagram />
+                    </Button>
                 </Typography>
             </>
         )

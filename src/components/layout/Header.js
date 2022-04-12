@@ -50,7 +50,7 @@ export default class Header extends Component {
         const { anchorElLeft, anchorElRight } = this.state;
 
         const leftOption = ['Upload'];
-        const rightOption = ['About', 'Contact'];
+        const rightOption = ['User', 'About', 'Contact'];
 
         return (
             <>

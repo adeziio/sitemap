@@ -60,7 +60,7 @@ export default class Upload extends Component {
                     <Button
                         variant="contained"
                         component="label"
-                        sx={{ display: "block", marginTop: 1 }}
+                        sx={{ marginTop: 1 }}
                         onClick={this.handleSubmit}
                     >
                         Submit

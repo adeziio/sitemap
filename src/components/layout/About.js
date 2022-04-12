@@ -24,12 +24,8 @@ export default class About extends Component {
                     </Grid>
                     <Grid item xs={8} >
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
-                            <p>Welcome to the Star Gallery collection.</p>
-                            <p>Snacks and drinks will NOT be provided.</p>
-                            <p>You can look but don't touch.</p>
-                            {/* <p>Videos and images are for personal/educational purposes only.</p> */}
-                            {/* <p>Under section 107 of the Copyright Act 1976, allowance is made for "Fair Use" for purposes such as criticism, comment, news, reporting, teaching, scholarship, and research.</p> */}
-                            {/* <p>Fair use is a use permitted by Copyright Statue that might otherwise be infringing, Non-Profit, Educational, or Personal Use tips the balance in favor of Fair Use.</p> */}
+                            <p>Welcome to Star Gallery</p>
+                            <p>Click Upload to submit your photo and it will magically appear on the front page</p>
                         </Typography>
                     </Grid>
                 </Grid>

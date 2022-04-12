@@ -3,6 +3,7 @@ import './../css/style.css';
 import Header from "./Header";
 import Upload from "./Upload";
 import Gallery from "./Gallery";
+import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -11,7 +12,8 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: "Gallery"
+            page: "Gallery",
+            isAdmin: false
         }
     }
 
@@ -21,8 +23,14 @@ export default class Home extends Component {
         })
     }
 
+    setisAdmin = (isAuth) => {
+        this.setState({
+            isAdmin: isAuth
+        })
+    }
+
     render() {
-        const { page } = this.state;
+        const { page, isAdmin } = this.state;
 
         return (
             <div >
@@ -31,7 +39,12 @@ export default class Home extends Component {
                 </div>
 
                 <div className="content-container">
-                    {page === "Upload" ? <Upload /> : page === "About" ? <About /> : page === "Contact" ? <Contact /> : null}
+                    {page === "Upload" ? <Upload />
+                        : page === "About" ? <About />
+                            : page === "Contact" ? <Contact />
+                                : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
+                                    : null
+                    }
                 </div>
 
                 <div className="gallery-container">
