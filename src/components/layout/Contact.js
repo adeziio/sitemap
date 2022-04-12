@@ -12,7 +12,7 @@ export default class Contact extends Component {
 
         return (
             <>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} marginTop="1rem">
                     <Grid item xs={16}>
                         <Typography variant="h5" color="text.primary" fontSize="1rem">
                             Phone:

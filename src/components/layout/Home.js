@@ -49,11 +49,10 @@ export default class Home extends Component {
                                         : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
                                             : null
                     }
-                </div>
-
-                <div className="gallery-container">
                     {page === "Gallery" ? <Gallery isAdmin={isAdmin} /> : null}
                 </div>
+
+
 
                 <div className="footer-container">
                     <Footer />

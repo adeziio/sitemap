@@ -45,7 +45,7 @@ export default class Upload extends Component {
 
         return (
             <>
-                <FormControl>
+                <FormControl variant="standard" sx={{ width: "20rem", marginTop: "2rem" }}>
                     <Button
                         variant="contained"
                         component="label"

@@ -47,7 +47,7 @@ export default class Delete extends Component {
 
         return (
             <>
-                <FormControl variant="standard" sx={{ width: "20rem" }}>
+                <FormControl variant="standard" sx={{ width: "20rem", marginTop: "2rem" }}>
                     <TextField sx={{ marginTop: 1 }} label="Key" variant="outlined" onChange={(e) => this.setKey(e)} onKeyDown={this._handleKeyDown} />
                     <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.delete} >
                         Delete

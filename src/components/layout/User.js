@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, FormControl, Alert, TextField, Typography } from '@mui/material';
+import { Button, FormControl, Alert, TextField, Typography, Box } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
 export default class User extends Component {
@@ -65,24 +65,28 @@ export default class User extends Component {
 
         return (
             <>
-                {!isAdmin ?
-                    <FormControl variant="standard" sx={{ width: "20rem" }}>
-                        <TextField sx={{ marginTop: 1 }} label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
-                        <TextField sx={{ marginTop: 1 }} label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
-                        <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.login} >
-                            Log in
-                        </Button>
-                        {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Invalid Username/Password`}</Alert> : null}
-                    </FormControl>
-                    :
-                    <>
-                        <AccountCircle sx={{ color: "orange", fontSize: 100 }} />
-                        <Typography>Logged in as <span style={{ fontWeight: "bold" }}>{user}</span></Typography>
-                        <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.logout} >
-                            Log out
-                        </Button>
-                    </>
-                }
+                <FormControl variant="standard" sx={{ marginTop: "2rem" }}>
+                    {!isAdmin ?
+                        <>
+                            <Box sx={{ width: "20rem", marginTop: 1 }} >
+                                <TextField label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
+                                <TextField label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
+                                <Button type="button" color="primary" variant="contained" onClick={this.login} >
+                                    Log in
+                                </Button>
+                                {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Invalid Username/Password`}</Alert> : null}
+                            </Box>
+                        </>
+                        :
+                        <>
+                            <AccountCircle sx={{ color: "orange", fontSize: 150 }} />
+                            <Typography >Logged in as <span style={{ fontWeight: "bold" }}>{user}</span></Typography>
+                            <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.logout} >
+                                Log out
+                            </Button>
+                        </>
+                    }
+                </FormControl>
             </>
         )
     }

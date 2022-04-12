@@ -12,7 +12,7 @@ export default class About extends Component {
     render() {
         return (
             <>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} marginTop="1rem">
                     <Grid item xs={4}>
                         <div style={{ width: "100%" }}>
                             <CardMedia

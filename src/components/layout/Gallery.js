@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, CircularProgress, ImageList } from '@mui/material';
+import { Alert, ImageList } from '@mui/material';
 import { getGallery } from "./../api/BackendAPI";
 import GalleryPhoto from "./GalleryPhoto";
 
@@ -65,7 +65,7 @@ export default class Gallery extends Component {
                     </ImageList>
                     : resMsg === "Failed" ?
                         <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to load gallery`}</Alert>
-                        : <CircularProgress />
+                        : null
                 }
             </>
         )
