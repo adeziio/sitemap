@@ -39,6 +39,7 @@ export default class Gallery extends Component {
     }
 
     render() {
+        const { isAdmin } = this.props;
         const { gallery, resMsg } = this.state;
 
         return (
@@ -58,7 +59,7 @@ export default class Gallery extends Component {
                     >
                         {gallery.map((item) => {
                             return (
-                                <GalleryPhoto key={item.key} item={item} />
+                                <GalleryPhoto key={item.key} item={item} isAdmin={isAdmin} />
                             )
                         })}
                     </ImageList>

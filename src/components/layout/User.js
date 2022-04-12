@@ -30,7 +30,7 @@ export default class User extends Component {
         })
     }
 
-    submit = () => {
+    login = () => {
         const { user, password } = this.state;
         if (user === "admin") {
             if (password === process.env.REACT_APP_ADMIN_PASSWORD) {
@@ -45,9 +45,17 @@ export default class User extends Component {
         }
     }
 
+    logout = () => {
+        this.setState({
+            user: "",
+            password: "",
+            resMsg: ""
+        }, () => this.props.setisAdmin(false))
+    }
+
     _handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            this.submit();
+            this.login();
         }
     }
 
@@ -59,10 +67,10 @@ export default class User extends Component {
         return (
             <>
                 {!isAdmin ?
-                    <FormControl variant="standard">
+                    <FormControl variant="standard" sx={{ width: "20rem" }}>
                         <TextField sx={{ marginTop: 1 }} label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
                         <TextField sx={{ marginTop: 1 }} label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
-                        <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.submit} >
+                        <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.login} >
                             Log in
                         </Button>
                         {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Invalid Username/Password`}</Alert> : null}
@@ -70,7 +78,10 @@ export default class User extends Component {
                     :
                     <>
                         <AccountCircle sx={{ color: "#005b96", fontSize: 100 }} />
-                        <Typography>Logged in as <Typography sx={{ fontWeight: "bold" }}>{user}</Typography></Typography>
+                        <Typography>Logged in as <span style={{ fontWeight: "bold" }}>{user}</span></Typography>
+                        <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.logout} >
+                            Log out
+                        </Button>
                     </>
                 }
             </>

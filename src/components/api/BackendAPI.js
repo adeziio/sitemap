@@ -43,3 +43,17 @@ export const extractKey = async (key) => {
         return await res.json();
     }
 }
+
+export const deleteKey = async (key) => {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/delete?key=${key}`, {
+        "method": "GET",
+        "headers": {
+            'stargallery-api-key': process.env.REACT_APP_STARGALLERY_API_KEY
+        }
+    }).catch(err => {
+        return false;
+    })
+    if (res) {
+        return await res.json();
+    }
+}

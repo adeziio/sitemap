@@ -48,7 +48,7 @@ export default class Home extends Component {
                 </div>
 
                 <div className="gallery-container">
-                    {page === "Gallery" ? <Gallery /> : null}
+                    {page === "Gallery" ? <Gallery isAdmin={isAdmin} /> : null}
                 </div>
 
                 <div className="footer-container">
