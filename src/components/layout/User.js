@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, FormControl, Alert, TextField, Typography, Box } from '@mui/material';
+import { Button, FormControl, Alert, TextField, Typography } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 
 export default class User extends Component {
@@ -68,14 +68,12 @@ export default class User extends Component {
                 <FormControl variant="standard" sx={{ marginTop: "2rem" }}>
                     {!isAdmin ?
                         <>
-                            <Box sx={{ width: "20rem", marginTop: 1 }} >
-                                <TextField label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
-                                <TextField label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
-                                <Button type="button" color="primary" variant="contained" onClick={this.login} >
-                                    Log in
-                                </Button>
-                                {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Invalid Username/Password`}</Alert> : null}
-                            </Box>
+                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
+                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
+                            <Button sx={{ width: "20rem", marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.login} >
+                                Log in
+                            </Button>
+                            {resMsg === "Error" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Invalid Username/Password`}</Alert> : null}
                         </>
                         :
                         <>
