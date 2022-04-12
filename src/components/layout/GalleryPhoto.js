@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardActionArea, CardMedia, ImageListItem } from '@mui/material';
-import { extract } from "../api/BackendAPI";
+import { extractKey } from "../api/BackendAPI";
 
 export default class GalleryPhoto extends Component {
     constructor(props) {
@@ -25,7 +25,7 @@ export default class GalleryPhoto extends Component {
     }
 
     extract = async (key) => {
-        let resExtract = await extract(key);
+        let resExtract = await extractKey(key);
         if (resExtract) {
             if (resExtract.status === "Success") {
                 this.setState({
@@ -44,14 +44,14 @@ export default class GalleryPhoto extends Component {
     render() {
         const { item } = this.props;
         const { base64 } = this.state;
-        const key = item.key;
+
         const date = item.date;
         const src = `data:image/*;base64,${base64}`;
 
         return (
             <>
                 {base64 !== "" ?
-                    <ImageListItem key={key}>
+                    <ImageListItem>
                         <Card
                             sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
                             elevation={5}

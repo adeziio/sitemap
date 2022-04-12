@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Alert } from '@mui/material';
-import { upload } from "./../api/BackendAPI";
+import { uploadFile } from "./../api/BackendAPI";
 
 export default class Upload extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ export default class Upload extends Component {
     handleSubmit = async () => {
         const { file } = this.state;
         if (file) {
-            const result = await upload(file);
+            const result = await uploadFile(file);
             if (result) {
                 this.setResMsg(result.status);
             }

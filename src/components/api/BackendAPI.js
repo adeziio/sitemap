@@ -1,5 +1,4 @@
-
-export const gallery = async () => {
+export const getGallery = async () => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gallery`, {
         "method": "GET",
         "headers": {
@@ -13,7 +12,7 @@ export const gallery = async () => {
     }
 }
 
-export const upload = async (file) => {
+export const uploadFile = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
 
@@ -31,7 +30,7 @@ export const upload = async (file) => {
     }
 }
 
-export const extract = async (key) => {
+export const extractKey = async (key) => {
     const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/extract?key=${key}`, {
         "method": "GET",
         "headers": {

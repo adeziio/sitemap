@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, CircularProgress, ImageList } from '@mui/material';
-import { gallery } from "./../api/BackendAPI";
+import { getGallery } from "./../api/BackendAPI";
 import GalleryPhoto from "./GalleryPhoto";
 
 export default class Gallery extends Component {
@@ -18,7 +18,7 @@ export default class Gallery extends Component {
 
     getGallery = async () => {
         let newGallery = [];
-        let resGallery = await gallery();
+        let resGallery = await getGallery();
         if (resGallery) {
             newGallery = resGallery.gallery;
             this.setState({
@@ -58,7 +58,7 @@ export default class Gallery extends Component {
                     >
                         {gallery.map((item) => {
                             return (
-                                <GalleryPhoto item={item} />
+                                <GalleryPhoto key={item.key} item={item} />
                             )
                         })}
                     </ImageList>
