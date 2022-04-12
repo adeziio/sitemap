@@ -49,7 +49,7 @@ export default class Upload extends Component {
                     <Button
                         variant="contained"
                         component="label"
-                        sx={{ marginTop: 1, backgroundColor: "#005b96" }}
+                        sx={{ marginTop: 1 }}
                     >
                         <input
                             name="input"
@@ -61,7 +61,7 @@ export default class Upload extends Component {
                     <Button
                         variant="contained"
                         component="label"
-                        sx={{ marginTop: 1, backgroundColor: "#005b96" }}
+                        sx={{ marginTop: 1 }}
                         onClick={this.handleSubmit}
                     >
                         Submit

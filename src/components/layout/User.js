@@ -76,7 +76,7 @@ export default class User extends Component {
                     </FormControl>
                     :
                     <>
-                        <AccountCircle sx={{ color: "#005b96", fontSize: 100 }} />
+                        <AccountCircle sx={{ color: "orange", fontSize: 100 }} />
                         <Typography>Logged in as <span style={{ fontWeight: "bold" }}>{user}</span></Typography>
                         <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.logout} >
                             Log out
