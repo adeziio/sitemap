@@ -47,7 +47,7 @@ export default class GalleryPhoto extends Component {
         let resDelete = await deleteKey(key);
         if (resDelete) {
             if (resDelete.status === "Success") {
-                window.location.reload();
+                this.props.getGallery();
             }
         }
         this.toggleDialog();

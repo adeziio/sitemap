@@ -59,7 +59,7 @@ export default class Gallery extends Component {
                     >
                         {gallery.map((item) => {
                             return (
-                                <GalleryPhoto key={item.key} item={item} isAdmin={isAdmin} />
+                                <GalleryPhoto key={item.key} item={item} isAdmin={isAdmin} getGallery={this.getGallery} />
                             )
                         })}
                     </ImageList>
