@@ -20,13 +20,19 @@ export default class Gallery extends Component {
         let resGallery = await gallery();
         if (resGallery) {
             for (let i = 0; i < resGallery.gallery.length; i++) {
+                // if (resGallery.gallery[i] === "dece8678e8e3930cc0737aeddd3f1027") {
                 let resExtract = await extract(resGallery.gallery[i]);
                 if (resExtract) {
                     if (resExtract.status === "Success") {
                         newGallery.push(resExtract.src);
                     }
                 }
+                // }
             }
+            newGallery = newGallery
+                .map(value => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value)
             this.setState({
                 gallery: newGallery
             })
