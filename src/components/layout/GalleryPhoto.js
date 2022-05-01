@@ -9,7 +9,6 @@ export default class GalleryPhoto extends Component {
         this.state = {
             base64: "",
             dialog: false,
-            isHover: false,
             resMsg: ""
         }
     }
@@ -25,12 +24,6 @@ export default class GalleryPhoto extends Component {
             dialog: !prevState.dialog,
             resMsg: ""
         }))
-    }
-
-    toggleIsHover = (param) => {
-        this.setState({
-            isHover: param
-        })
     }
 
     componentDidMount = () => {
@@ -80,7 +73,7 @@ export default class GalleryPhoto extends Component {
 
     render() {
         const { item, isAdmin } = this.props;
-        const { base64, dialog, isHover, resMsg } = this.state;
+        const { base64, dialog, resMsg } = this.state;
         const key = item.key;
         const date = item.date;
         const src = `data:image/*;base64,${base64}`;
@@ -123,16 +116,7 @@ export default class GalleryPhoto extends Component {
                                         image={src}
                                         alt={"img"}
                                         onClick={() => this.focusedView(key)}
-                                        onMouseOver={() => this.toggleIsHover(true)}
-                                        onMouseOut={() => this.toggleIsHover(false)}
                                     />
-
-                                    {isHover && !isAdmin ?
-                                        <div>
-                                            {date}
-                                        </div>
-                                        : null
-                                    }
 
                                     {isAdmin ?
                                         <>
