@@ -9,6 +9,7 @@ export default class GalleryPhoto extends Component {
         this.state = {
             base64: "",
             dialog: false,
+            isHover: false,
             resMsg: ""
         }
     }
@@ -24,6 +25,12 @@ export default class GalleryPhoto extends Component {
             dialog: !prevState.dialog,
             resMsg: ""
         }))
+    }
+
+    toggleIsHover = (param) => {
+        this.setState({
+            isHover: param
+        })
     }
 
     componentDidMount = () => {
@@ -67,15 +74,13 @@ export default class GalleryPhoto extends Component {
         }
     }
 
-    focusedView = (src, date) => {
-        const newTab = window.open();
-        newTab?.document.write(`<!DOCTYPE html><head><title>${date}</title></head><body><img src="${src}" width="100%" height="auto" ></body></html>`);
-        newTab?.document.close();
+    focusedView = (key) => {
+        window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
     }
 
     render() {
         const { item, isAdmin } = this.props;
-        const { base64, dialog, resMsg } = this.state;
+        const { base64, dialog, isHover, resMsg } = this.state;
         const key = item.key;
         const date = item.date;
         const src = `data:image/*;base64,${base64}`;
@@ -102,7 +107,7 @@ export default class GalleryPhoto extends Component {
                                     width="100%"
                                     image={src}
                                     alt={"img"}
-                                    onClick={() => this.focusedView(src, date)}
+                                    onClick={() => this.focusedView(key)}
                                 />
                             </DialogContent>
                         </Dialog>
@@ -117,12 +122,26 @@ export default class GalleryPhoto extends Component {
                                         width="100%"
                                         image={src}
                                         alt={"img"}
-                                        onClick={() => this.focusedView(src, date)}
+                                        onClick={() => this.focusedView(key)}
+                                        onMouseOver={() => this.toggleIsHover(true)}
+                                        onMouseOut={() => this.toggleIsHover(false)}
                                     />
+
+                                    {isHover && !isAdmin ?
+                                        <div>
+                                            {date}
+                                        </div>
+                                        : null
+                                    }
+
                                     {isAdmin ?
                                         <>
+                                            <div>
+                                                {date}
+                                            </div>
                                             <DeleteForever onClick={() => this.toggleDialog(key)} />
-                                        </> : null
+                                        </>
+                                        : null
                                     }
                                 </CardActionArea>
                             </Card>

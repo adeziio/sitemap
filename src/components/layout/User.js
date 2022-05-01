@@ -68,8 +68,15 @@ export default class User extends Component {
                 <FormControl variant="standard" sx={{ marginTop: "2rem" }}>
                     {!isAdmin ?
                         <>
-                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="User" variant="outlined" onChange={(e) => this.setUser(e)} onKeyDown={this._handleKeyDown} />
-                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="Password" variant="outlined" onChange={(e) => this.setPassword(e)} onKeyDown={this._handleKeyDown} />
+                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="User" variant="outlined"
+                                onChange={(e) => this.setUser(e)}
+                                onKeyDown={this._handleKeyDown}
+                            />
+                            <TextField sx={{ width: "20rem", marginTop: 1 }} label="Password" variant="outlined"
+                                onChange={(e) => this.setPassword(e)}
+                                onKeyDown={this._handleKeyDown}
+                                type="password"
+                            />
                             <Button sx={{ width: "20rem", marginTop: 1 }} type="button" color="primary" variant="contained" onClick={this.login} >
                                 Log in
                             </Button>
