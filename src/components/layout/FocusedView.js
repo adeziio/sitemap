@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MetaTags from 'react-meta-tags';
 import notFound from './../logo/not-found.jpg';
 import { extractKey } from "../api/BackendAPI";
 
@@ -46,6 +47,9 @@ export default class FocusedView extends Component {
 
         return (
             <>
+                <MetaTags>
+                    <meta id="og-image" property="og:image" content="path/to/image.jpg" />
+                </MetaTags>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
         )
