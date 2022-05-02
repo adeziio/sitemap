@@ -48,7 +48,15 @@ export default class FocusedView extends Component {
         return (
             <>
                 <Helmet>
-                    <meta id="og-image" property="og:image" content={src} />
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <meta name="description" content="A photo collection created by TESTING." />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="TESTING" />
+                    <meta property="og:description" content="A photo collection created by TESTING." />
+                    <meta property="og:image" content={src} />
+                    <meta property="og:url" content="https://stargallery.vercel.app/" />
                 </Helmet>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
