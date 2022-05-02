@@ -19,7 +19,7 @@ export default class About extends Component {
                         <Typography variant="h5" color="text.primary" fontSize="1rem" >
                             <h2>Welcome to Star Gallery!</h2>
                             <p>Click <span style={{ fontWeight: "bold" }}>Upload</span> to submit your own photo</p>
-                            <p>The current gallery size is <span style={{ fontWeight: "bold" }}>{size}</span></p>
+                            <p>Gallery Size: <span style={{ fontWeight: "bold" }}>{size}</span></p>
                         </Typography>
                     </Grid>
                 </Grid>
