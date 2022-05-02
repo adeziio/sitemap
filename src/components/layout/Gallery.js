@@ -1,20 +1,40 @@
 import React, { Component } from 'react';
 import { Alert, ImageList } from '@mui/material';
 import GalleryPhoto from "./GalleryPhoto";
+import { getGallery } from "./../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            gallery: [],
+            resMsg: ""
         }
     }
 
-    getGallery = () => {
-        this.props.getGallery();
+    componentDidMount = () => {
+        this.getGallery();
+    }
+
+    getGallery = async () => {
+        let resGallery = await getGallery();
+        if (resGallery) {
+            this.setState({
+                gallery: resGallery.gallery
+            }, () => {
+                this.props.setSize(resGallery.size)
+            })
+        }
+        else {
+            this.setState({
+                resMsg: "Failed"
+            })
+        }
     }
 
     render() {
-        const { isAdmin, gallery, resMsg } = this.props;
+        const { isAdmin } = this.props;
+        const { gallery, resMsg } = this.state;
 
         return (
             <>

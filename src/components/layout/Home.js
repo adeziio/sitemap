@@ -9,7 +9,6 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import { getGallery } from "./../api/BackendAPI";
 
 export default class Home extends Component {
     constructor(props) {
@@ -17,14 +16,8 @@ export default class Home extends Component {
         this.state = {
             page: "Gallery",
             isAdmin: false,
-            gallery: [],
-            size: 0,
-            resMsg: "",
+            size: 0
         }
-    }
-
-    componentDidMount = () => {
-        this.getGallery();
     }
 
     setPage = (page) => {
@@ -39,23 +32,14 @@ export default class Home extends Component {
         })
     }
 
-    getGallery = async () => {
-        let resGallery = await getGallery();
-        if (resGallery) {
-            this.setState({
-                gallery: resGallery.gallery,
-                size: resGallery.size
-            })
-        }
-        else {
-            this.setState({
-                resMsg: "Failed"
-            })
-        }
+    setSize = (size) => {
+        this.setState({
+            size: size
+        })
     }
 
     render() {
-        const { page, isAdmin, gallery, size, resMsg } = this.state;
+        const { page, isAdmin, size } = this.state;
 
         return (
             <div >
@@ -73,12 +57,10 @@ export default class Home extends Component {
                                             : null
                     }
                     {page === "Gallery" ?
-                        <Gallery isAdmin={isAdmin} gallery={gallery} getGallery={this.getGallery} resMsg={resMsg} />
+                        <Gallery isAdmin={isAdmin} setSize={this.setSize} />
                         : null
                     }
                 </div>
-
-
 
                 <div className="footer-container">
                     <Footer />
