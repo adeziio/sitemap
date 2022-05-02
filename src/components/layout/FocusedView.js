@@ -48,7 +48,7 @@ export default class FocusedView extends Component {
         return (
             <>
                 <MetaTags>
-                    <meta id="og-image" property="og:image" content="path/to/image.jpg" />
+                    <meta id="og-image" property="og:image" content={src} />
                 </MetaTags>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
