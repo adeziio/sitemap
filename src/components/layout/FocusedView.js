@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MetaTags from 'react-meta-tags';
+import { Helmet } from "react-helmet";
 import notFound from './../logo/not-found.jpg';
 import { extractKey } from "../api/BackendAPI";
 
@@ -47,9 +47,9 @@ export default class FocusedView extends Component {
 
         return (
             <>
-                <MetaTags>
+                <Helmet>
                     <meta id="og-image" property="og:image" content={src} />
-                </MetaTags>
+                </Helmet>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
         )
