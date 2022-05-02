@@ -68,7 +68,7 @@ export default class Header extends Component {
                                 component="div"
                                 sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                             >
-                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setPage("Gallery"); }} />
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => window.location.reload()} />
                                 <AutoAwesome />
                             </Typography>
 
@@ -114,7 +114,7 @@ export default class Header extends Component {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
                             >
-                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => { this.setPage("Gallery") }} />
+                                <img className="pointer" src={logo} alt="star logo" height="50px" onClick={() => window.location.reload()} />
                                 <AutoAwesome />
                             </Typography>
                             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

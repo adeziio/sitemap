@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Typography, Grid, CardMedia } from '@mui/material';
-import image from "./../logo/project-img.png";
+import { Typography, Grid } from '@mui/material';
 
 export default class About extends Component {
     constructor(props) {
@@ -10,22 +9,17 @@ export default class About extends Component {
     }
 
     render() {
+        const { size } = this.props;
+
         return (
             <>
                 <Grid container spacing={2} marginTop="1rem">
-                    <Grid item xs={4}>
-                        <div style={{ width: "100%" }}>
-                            <CardMedia
-                                component="img"
-                                image={image}
-                                alt={"profile-pic"}
-                            />
-                        </div>
-                    </Grid>
-                    <Grid item xs={8} >
-                        <Typography variant="h5" color="text.primary" fontSize="1rem">
-                            <p>Welcome to Star Gallery</p>
-                            <p>Click Upload to submit your photo and it will magically appear on the front page</p>
+
+                    <Grid item xs={16} >
+                        <Typography variant="h5" color="text.primary" fontSize="1rem" >
+                            <h2>Welcome to Star Gallery!</h2>
+                            <p>Click <span style={{ fontFamily: "cursive" }}>Upload</span> to submit your own photo and it will magically appear on the front page</p>
+                            <p>The current gallery size is <span style={{ fontWeight: "bold" }}>{size}</span></p>
                         </Typography>
                     </Grid>
                 </Grid>

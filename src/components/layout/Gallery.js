@@ -1,46 +1,20 @@
 import React, { Component } from 'react';
 import { Alert, ImageList } from '@mui/material';
-import { getGallery } from "./../api/BackendAPI";
 import GalleryPhoto from "./GalleryPhoto";
 
 export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gallery: [],
-            resMsg: ""
         }
     }
 
-    componentDidMount = () => {
-        this.getGallery();
-    }
-
-    getGallery = async () => {
-        let newGallery = [];
-        let resGallery = await getGallery();
-        if (resGallery) {
-            newGallery = resGallery.gallery;
-            this.setState({
-                gallery: newGallery
-            })
-        }
-        else {
-            this.setState({
-                resMsg: "Failed"
-            })
-        }
-    }
-
-    focusedView = (base64, date) => {
-        const newTab = window.open();
-        newTab?.document.write(`<!DOCTYPE html><head><title>${date}</title></head><body><img src="${base64}" width="100%" height="auto" ></body></html>`);
-        newTab?.document.close();
+    getGallery = () => {
+        this.props.getGallery();
     }
 
     render() {
-        const { isAdmin } = this.props;
-        const { gallery, resMsg } = this.state;
+        const { isAdmin, gallery, resMsg } = this.props;
 
         return (
             <>

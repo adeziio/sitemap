@@ -9,14 +9,22 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import { getGallery } from "./../api/BackendAPI";
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             page: "Gallery",
-            isAdmin: false
+            isAdmin: false,
+            gallery: [],
+            size: 0,
+            resMsg: "",
         }
+    }
+
+    componentDidMount = () => {
+        this.getGallery();
     }
 
     setPage = (page) => {
@@ -31,8 +39,23 @@ export default class Home extends Component {
         })
     }
 
+    getGallery = async () => {
+        let resGallery = await getGallery();
+        if (resGallery) {
+            this.setState({
+                gallery: resGallery.gallery,
+                size: resGallery.size
+            })
+        }
+        else {
+            this.setState({
+                resMsg: "Failed"
+            })
+        }
+    }
+
     render() {
-        const { page, isAdmin } = this.state;
+        const { page, isAdmin, gallery, size, resMsg } = this.state;
 
         return (
             <div >
@@ -44,12 +67,15 @@ export default class Home extends Component {
                     {page === "Upload" ? <Upload />
                         : page === "Extract" ? <Extract />
                             : page === "Delete" ? <Delete />
-                                : page === "About" ? <About />
+                                : page === "About" ? <About size={size} />
                                     : page === "Contact" ? <Contact />
                                         : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
                                             : null
                     }
-                    {page === "Gallery" ? <Gallery isAdmin={isAdmin} /> : null}
+                    {page === "Gallery" ?
+                        <Gallery isAdmin={isAdmin} gallery={gallery} getGallery={this.getGallery} resMsg={resMsg} />
+                        : null
+                    }
                 </div>
 
 
