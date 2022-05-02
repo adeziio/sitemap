@@ -1,4 +1,4 @@
-import React, { Component, Share } from 'react';
+import React, { Component } from 'react';
 import notFound from './../logo/not-found.jpg';
 import { extractKey } from "../api/BackendAPI";
 
@@ -43,15 +43,6 @@ export default class FocusedView extends Component {
     render() {
         const { base64, resMsg } = this.state;
         const src = resMsg !== "Failed" ? `data:image/*;base64,${base64}` : notFound;
-
-        let shareImage = {
-            title: "test",//string
-            message: "something",//string
-            url: src,// eg.'http://img.gemejo.com/product/8c/099/cf53b3a6008136ef0882197d5f5.jpg',
-
-        };
-
-        Share.open(shareImage).catch(err => console.log(err));
 
         return (
             <>
