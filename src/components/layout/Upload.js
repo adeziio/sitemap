@@ -26,7 +26,7 @@ export default class Upload extends Component {
             reader.onloadend = (e) => {
                 this.setState({
                     file: file,
-                    previewSrc: [reader.result],
+                    previewSrc: reader.result,
                     resMsg: ""
                 })
             }

@@ -21,11 +21,13 @@ export default class Gallery extends Component {
     getGallery = async () => {
         let resGallery = await getGallery();
         if (resGallery) {
-            this.setState({
-                gallery: resGallery.gallery
-            }, () => {
-                this.props.setSize(resGallery.size)
-            })
+            if (resGallery.size !== this.props.size) {
+                this.setState({
+                    gallery: resGallery.gallery
+                }, () => {
+                    this.props.setSize(resGallery.size)
+                })
+            }
         }
         else {
             this.setState({
