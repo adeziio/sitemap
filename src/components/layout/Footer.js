@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Typography, Button } from '@mui/material';
-import { LinkedIn, GitHub, Instagram } from '@mui/icons-material';
+import { Typography, Button, Tooltip } from '@mui/material';
+import { LinkedIn, GitHub, Instagram, Email } from '@mui/icons-material';
 
 export default class Footer extends Component {
     constructor(props) {
@@ -18,21 +18,35 @@ export default class Footer extends Component {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
-                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://github.com/adeziio")}>
-                        <GitHub />
-                    </Button>
+                    <Tooltip title="GitHub">
+                        <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://github.com/adeziio")}>
+                            <GitHub />
+                        </Button>
+                    </Tooltip>
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
-                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.linkedin.com/in/aden-tran-aba695171")}>
-                        <LinkedIn />
-                    </Button>
+                    <Tooltip title="LinkedIn">
+                        <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.linkedin.com/in/aden-tran-aba695171")}>
+                            <LinkedIn />
+                        </Button>
+                    </Tooltip>
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
-                    <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.instagram.com/adeziio")}>
-                        <Instagram />
-                    </Button>
+                    <Tooltip title="Instagram">
+                        <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("https://www.instagram.com/adeziio")}>
+                            <Instagram />
+                        </Button>
+                    </Tooltip>
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
+                    <Tooltip title="Email">
+                        <Button sx={{ m: 0, p: 0, minWidth: "2rem" }} onClick={() => window.open("mailto:adeziio@yahoo.com")}>
+                            <Email />
+                        </Button>
+                    </Tooltip>
                 </Typography>
             </>
         )

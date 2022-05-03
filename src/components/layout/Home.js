@@ -7,7 +7,6 @@ import Delete from "./Delete";
 import Gallery from "./Gallery";
 import User from "./User";
 import About from "./About";
-import Contact from "./Contact";
 import Footer from "./Footer";
 
 export default class Home extends Component {
@@ -52,9 +51,8 @@ export default class Home extends Component {
                         : page === "Extract" ? <Extract />
                             : page === "Delete" ? <Delete />
                                 : page === "About" ? <About size={size} />
-                                    : page === "Contact" ? <Contact />
-                                        : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
-                                            : null
+                                    : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
+                                        : null
                     }
                     {page === "Gallery" ?
                         <Gallery isAdmin={isAdmin} setSize={this.setSize} />

@@ -51,7 +51,7 @@ export default class Header extends Component {
         const { anchorElLeft, anchorElRight } = this.state;
 
         const leftOption = ['Upload'];
-        const rightOption = ['User', 'About', 'Contact'];
+        const rightOption = ['User', 'About'];
         if (isAdmin) {
             leftOption.push("Extract");
             leftOption.push("Delete");
