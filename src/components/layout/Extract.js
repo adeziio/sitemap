@@ -73,7 +73,7 @@ export default class Extract extends Component {
                 </FormControl>
                 {base64 ?
                     <Card
-                        sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "block", m: 2 }}
+                        sx={{ height: "100%", width: "100%", maxWidth: "20rem", display: "block", m: 2 }}
                         elevation={5}
                     >
                         <CardMedia

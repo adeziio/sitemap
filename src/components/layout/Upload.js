@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, FormControl, Alert } from '@mui/material';
+import { Button, FormControl, Alert, Card, CardMedia } from '@mui/material';
 import { uploadFile } from "./../api/BackendAPI";
 
 export default class Upload extends Component {
@@ -7,6 +7,7 @@ export default class Upload extends Component {
         super(props);
         this.state = {
             file: undefined,
+            previewSrc: "",
             resMsg: ""
         }
     }
@@ -18,14 +19,31 @@ export default class Upload extends Component {
     }
 
     handleFileSelect = (event) => {
-        this.setState({
-            file: event.target.files[0],
-            resMsg: ""
-        })
+        let file = event.target.files[0];
+
+        if (file) {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = (e) => {
+                this.setState({
+                    file: file,
+                    previewSrc: [reader.result],
+                    resMsg: ""
+                })
+            }
+        }
+        else {
+            this.setState({
+                file: file,
+                previewSrc: "",
+                resMsg: ""
+            })
+        }
     }
 
     handleSubmit = async () => {
         const { file } = this.state;
+
         if (file) {
             const result = await uploadFile(file);
             if (result) {
@@ -41,7 +59,7 @@ export default class Upload extends Component {
     }
 
     render() {
-        const { resMsg } = this.state;
+        const { resMsg, previewSrc } = this.state;
 
         return (
             <>
@@ -71,6 +89,20 @@ export default class Upload extends Component {
                 {resMsg === "Success" ? <Alert sx={{ marginTop: 1 }} severity="success">{resMsg}</Alert> : null}
                 {resMsg === "No file selected" ? <Alert sx={{ marginTop: 1 }} severity="warning">{resMsg}</Alert> : null}
                 {resMsg === "Failed" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to upload`}</Alert> : null}
+
+                {previewSrc ?
+                    <Card
+                        sx={{ height: "100%", width: "100%", maxWidth: "20rem", display: "block", m: 2 }}
+                        elevation={5}
+                    >
+                        <CardMedia
+                            component="img"
+                            width="100%"
+                            image={previewSrc}
+                            alt={"img"}
+                        />
+                    </Card> : null
+                }
             </>
         )
     }
