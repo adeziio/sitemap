@@ -8,7 +8,6 @@ import {
 import Home from './components/layout/Home';
 import FocusedView from './components/layout/FocusedView';
 import { Helmet } from "react-helmet";
-import notFound from './components/logo/not-found.jpg';
 import logoIcon from './components/logo/logo-icon.png';
 
 function App() {
@@ -31,16 +30,7 @@ function App() {
               <Home />
             </>
           } />
-          <Route path="/photo" element={
-            <>
-              <Helmet>
-                <meta property="og:description" content="" />
-                <meta property="og:image" content={notFound} />
-                <title>Star Gallery Photo</title>
-              </Helmet>
-              <FocusedView />
-            </>
-          } />
+          <Route path="/photo" element={<FocusedView />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </Router>
