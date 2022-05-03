@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Helmet } from "react-helmet";
 import './../css/style.css';
 import Header from "./Header";
 import Upload from "./Upload";
@@ -44,14 +43,6 @@ export default class Home extends Component {
 
         return (
             <div >
-                <Helmet>
-                    <meta name="description" content="A photo collection created by Aden Tran." />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content="Star Gallery" />
-                    <meta property="og:description" content="A photo collection created by Aden Tran." />
-                    <meta property="og:image" content="%PUBLIC_URL%/favicon.ico" />
-                    <meta property="og:url" content="https://stargallery.vercel.app/" />
-                </Helmet>
                 <div className="header-container">
                     <Header setPage={this.setPage} isAdmin={isAdmin} />
                 </div>
