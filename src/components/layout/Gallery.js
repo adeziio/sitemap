@@ -40,7 +40,7 @@ export default class Gallery extends Component {
 
         return (
             <>
-                <ScrollToTop smooth color="#ffffff" style={{ backgroundColor: "#005b96" }} />
+                <ScrollToTop smooth color="#ffffff" style={{ backgroundColor: "#005b96" }} viewBox="0 0 250 200" />
                 {gallery.length !== 0 ?
                     <PullToRefresh onRefresh={this.getGallery}>
                         <ImageList
