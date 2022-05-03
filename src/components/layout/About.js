@@ -17,7 +17,7 @@ export default class About extends Component {
 
                     <Grid item xs={16} >
                         <Typography variant="h5" color="text.primary" fontSize="1rem" >
-                            <h2>Welcome to Star Gallery!</h2>
+                            <h2>Welcome to my Star Gallery!</h2>
                             <p>Click <span style={{ fontWeight: "bold" }}>Upload</span> to submit your own photo</p>
                             <p>Gallery Size: <span style={{ fontWeight: "bold" }}>{size}</span></p>
                         </Typography>

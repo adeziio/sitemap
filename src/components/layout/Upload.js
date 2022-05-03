@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Alert, Card, CardMedia } from '@mui/material';
+import { FileUploader } from "react-drag-drop-files";
 import { uploadFile } from "./../api/BackendAPI";
 
 export default class Upload extends Component {
@@ -18,9 +19,7 @@ export default class Upload extends Component {
         })
     }
 
-    handleFileSelect = (event) => {
-        let file = event.target.files[0];
-
+    handleFileSelect = (file) => {
         if (file) {
             let reader = new FileReader();
             reader.readAsDataURL(file);
@@ -60,22 +59,12 @@ export default class Upload extends Component {
 
     render() {
         const { resMsg, previewSrc } = this.state;
+        const fileTypes = ["jpeg", "png", "gif"];
 
         return (
             <>
-                <FormControl variant="standard" sx={{ width: "20rem", marginTop: "2rem" }}>
-                    <Button
-                        variant="contained"
-                        component="label"
-                        sx={{ marginTop: 1 }}
-                    >
-                        <input
-                            name="input"
-                            type="file"
-                            accept="image/jpeg, image/png"
-                            onChange={this.handleFileSelect}
-                        />
-                    </Button>
+                <FormControl variant="standard" sx={{ width: "22rem", marginTop: "2rem" }}>
+                    <FileUploader handleChange={this.handleFileSelect} name="input" types={fileTypes} />
                     <Button
                         variant="contained"
                         component="label"
