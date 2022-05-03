@@ -59,7 +59,7 @@ export default class Upload extends Component {
 
     render() {
         const { resMsg, previewSrc } = this.state;
-        const fileTypes = ["jpeg", "png", "gif"];
+        const fileTypes = ["jpeg", "jpg", "png", "gif"];
 
         return (
             <>
