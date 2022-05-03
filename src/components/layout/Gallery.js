@@ -34,6 +34,24 @@ export default class Gallery extends Component {
         }
     }
 
+    refresh = async () => {
+        let resGallery = await getGallery();
+        if (resGallery) {
+            if (resGallery.size !== this.props.size) {
+                this.setState({
+                    gallery: resGallery.gallery
+                }, () => {
+                    this.props.setSize(resGallery.size)
+                })
+            }
+        }
+        else {
+            this.setState({
+                resMsg: "Failed"
+            })
+        }
+    }
+
     render() {
         const { isAdmin } = this.props;
         const { gallery, resMsg } = this.state;
@@ -42,7 +60,7 @@ export default class Gallery extends Component {
             <>
                 <ScrollUpButton />
                 {gallery.length !== 0 ?
-                    <PullToRefresh onRefresh={this.getGallery}>
+                    <PullToRefresh onRefresh={this.refresh}>
                         <ImageList
                             variant="masonry"
                             sx={{

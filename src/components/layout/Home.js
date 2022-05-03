@@ -55,7 +55,7 @@ export default class Home extends Component {
                                         : null
                     }
                     {page === "Gallery" ?
-                        <Gallery isAdmin={isAdmin} setSize={this.setSize} />
+                        <Gallery isAdmin={isAdmin} size={size} setSize={this.setSize} />
                         : null
                     }
                 </div>
