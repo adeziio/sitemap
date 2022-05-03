@@ -14,7 +14,7 @@ export default class Footer extends Component {
         return (
             <>
                 <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "block" }}>
-                    © 2022 Aden Tran
+                    © 2022 Created by Aden Tran.
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
