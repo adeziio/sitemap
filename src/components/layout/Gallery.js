@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Alert, ImageList } from '@mui/material';
 import PullToRefresh from 'react-simple-pull-to-refresh';
-import ScrollToTop from "react-scroll-to-top";
 import ScrollUpButton from "react-scroll-up-button";
 import GalleryPhoto from "./GalleryPhoto";
 import { getGallery } from "./../api/BackendAPI";
@@ -41,7 +40,6 @@ export default class Gallery extends Component {
 
         return (
             <>
-                {/* <ScrollToTop smooth color="#ffffff" style={{ backgroundColor: "#005b96" }} viewBox="0 0 250 200" /> */}
                 <ScrollUpButton />
                 {gallery.length !== 0 ?
                     <PullToRefresh onRefresh={this.getGallery}>
