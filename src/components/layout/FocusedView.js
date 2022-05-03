@@ -46,6 +46,10 @@ export default class FocusedView extends Component {
 
         return (
             <>
+                <Helmet>
+                    <meta property="og:description" content="" />
+                    <meta property="og:image" content={notFound} />
+                </Helmet>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
         )

@@ -9,6 +9,7 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import { Helmet } from "react-helmet";
 
 export default class Home extends Component {
     constructor(props) {
@@ -43,6 +44,14 @@ export default class Home extends Component {
 
         return (
             <div >
+                <Helmet>
+                    <meta name="description" content="A photo collection created by Aden Tran." />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="Star Gallery" />
+                    <meta property="og:description" content="A photo collection created by Aden Tran." />
+                    <meta property="og:image" content="%PUBLIC_URL%/favicon.ico" />
+                    <meta property="og:url" content="https://stargallery.vercel.app/" />
+                </Helmet>
                 <div className="header-container">
                     <Header setPage={this.setPage} isAdmin={isAdmin} />
                 </div>
