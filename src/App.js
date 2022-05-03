@@ -8,8 +8,8 @@ import {
 import Home from './components/layout/Home';
 import FocusedView from './components/layout/FocusedView';
 import { Helmet } from "react-helmet";
-import notFound from './../logo/not-found.jpg';
-import logoIcon from './../logo/logo-icon.png';
+import notFound from './components/logo/not-found.jpg';
+import logoIcon from './components/logo/logo-icon.png';
 
 function App() {
   return (
