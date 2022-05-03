@@ -26,6 +26,7 @@ function App() {
                 <meta property="og:description" content="A photo collection created by Aden Tran." />
                 <meta property="og:image" content={logoIcon} />
                 <meta property="og:url" content="https://stargallery.vercel.app/" />
+                <title>Star Gallery</title>
               </Helmet>
               <Home />
             </>
@@ -35,6 +36,7 @@ function App() {
               <Helmet>
                 <meta property="og:description" content="" />
                 <meta property="og:image" content={notFound} />
+                <title>Star Gallery Photo</title>
               </Helmet>
               <FocusedView />
             </>
