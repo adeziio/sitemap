@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Helmet } from "react-helmet";
 import notFound from './../logo/not-found.jpg';
 import { extractKey } from "../api/BackendAPI";
 
@@ -47,11 +46,6 @@ export default class FocusedView extends Component {
 
         return (
             <>
-                <Helmet>
-                    <meta property="og:description" content="" />
-                    <meta property="og:image" content={notFound} />
-                    <title>Star Gallery Photo</title>
-                </Helmet>
                 <img src={`${src}`} alt="" width="100%" height="auto" />
             </>
         )
