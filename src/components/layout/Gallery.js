@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Alert, ImageList } from '@mui/material';
-import { KeyboardArrowUp } from '@mui/icons-material';
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import ScrollToTop from "react-scroll-to-top";
 import GalleryPhoto from "./GalleryPhoto";
@@ -41,7 +40,7 @@ export default class Gallery extends Component {
 
         return (
             <>
-                <ScrollToTop smooth color="#ffffff" style={{ backgroundColor: "#005b96" }} component={<KeyboardArrowUp sx={{ color: "#ffffff" }} />} />
+                <ScrollToTop smooth color="#ffffff" style={{ backgroundColor: "#005b96" }} />
                 {gallery.length !== 0 ?
                     <PullToRefresh onRefresh={this.getGallery}>
                         <ImageList
