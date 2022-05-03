@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import './../css/style.css';
 import Header from "./Header";
 import Upload from "./Upload";
@@ -9,7 +10,6 @@ import User from "./User";
 import About from "./About";
 import Contact from "./Contact";
 import Footer from "./Footer";
-import { Helmet } from "react-helmet";
 
 export default class Home extends Component {
     constructor(props) {

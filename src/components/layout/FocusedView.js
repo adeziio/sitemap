@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from "react-helmet";
 import notFound from './../logo/not-found.jpg';
 import { extractKey } from "../api/BackendAPI";
 
