@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Typography, Grid } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export default class About extends Component {
     constructor(props) {
