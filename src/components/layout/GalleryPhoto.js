@@ -99,14 +99,14 @@ export default class GalleryPhoto extends Component {
                                     component="img"
                                     width="100%"
                                     image={src}
-                                    alt={"img"}
+                                    alt=""
                                     onClick={() => this.focusedView(key)}
                                 />
                             </DialogContent>
                         </Dialog>
                         <ImageListItem>
                             <Card
-                                sx={{ height: "100%", width: "100%", maxWidth: "400px", display: "inline-block" }}
+                                sx={{ height: "auto", width: "100%", maxWidth: "400px", display: "inline-block" }}
                                 elevation={5}
                             >
                                 <CardActionArea>
@@ -114,7 +114,7 @@ export default class GalleryPhoto extends Component {
                                         component="img"
                                         width="100%"
                                         image={src}
-                                        alt={"img"}
+                                        alt=""
                                         onClick={() => this.focusedView(key)}
                                     />
 
