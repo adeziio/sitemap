@@ -16,10 +16,14 @@ export default class About extends Component {
                 <Grid container spacing={2} marginTop="1rem">
 
                     <Grid item xs={16} >
-                        <Typography variant="h5" color="text.primary" fontSize="1rem" >
-                            <h3>Welcome to Star Gallery!</h3>
-                            <p>Click <span style={{ fontWeight: "bold" }}>Upload</span> to submit your photo</p>
-                            <p>Gallery Size: <span style={{ fontWeight: "bold" }}>{size}</span></p>
+                        <Typography variant="h5" color="text.primary" fontSize="1.5rem" fontWeight="bold" display="block">
+                            Welcome to Star Gallery!
+                        </Typography>
+                        <Typography variant="p" color="text.primary" fontSize="1rem" display="block">
+                            Click <span style={{ fontWeight: "bold" }}>Upload</span> to submit your own photo
+                        </Typography>
+                        <Typography variant="p" color="text.primary" fontSize="1rem" display="block">
+                            Gallery Size: <span style={{ fontWeight: "bold" }}>{size}</span>
                         </Typography>
                     </Grid>
                 </Grid>
