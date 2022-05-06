@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Alert, Card, CardMedia } from '@mui/material';
 import { FileUploader } from "react-drag-drop-files";
-import { uploadFile } from "./../api/BackendAPI";
+import { uploadFile } from "../../api/BackendAPI";
 
 export default class Upload extends Component {
     constructor(props) {

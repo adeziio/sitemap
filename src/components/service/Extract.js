@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Alert, TextField, Card, CardMedia } from '@mui/material';
-import { extractKey } from "../api/BackendAPI";
+import { extractKey } from "../../api/BackendAPI";
 
 export default class Extract extends Component {
     constructor(props) {

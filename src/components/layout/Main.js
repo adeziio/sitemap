@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Header from "./Header";
-import Upload from "./Upload";
-import Extract from "./Extract";
-import Delete from "./Delete";
-import Gallery from "./Gallery";
-import User from "./User";
-import About from "./About";
 import Footer from "./Footer";
+import Upload from "../service/Upload";
+import Extract from "../service/Extract";
+import Delete from "../service/Delete";
+import Gallery from "../service/Gallery";
+import User from "../service/User";
+import About from "../service/About";
 
-export default class Home extends Component {
+
+export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {

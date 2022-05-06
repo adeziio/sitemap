@@ -5,16 +5,16 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import './components/css/style.css';
-import Home from './components/layout/Home';
-import FocusedView from './components/layout/FocusedView';
+import './css/style.css';
+import Main from './components/layout/Main';
+import FocusedView from './components/service/FocusedView';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Main />} />
           <Route path="/photo" element={<FocusedView />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

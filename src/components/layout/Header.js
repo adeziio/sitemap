@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Tooltip, MenuItem } from '@mui/material';
 import { MenuOutlined, Stars, AutoAwesome } from '@mui/icons-material';
-import logo from "./../logo/logo.png";
+import logo from './../../logo/logo.png';
 
 export default class Header extends Component {
     constructor(props) {

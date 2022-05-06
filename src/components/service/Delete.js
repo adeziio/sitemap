@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Alert, TextField } from '@mui/material';
-import { deleteKey } from "./../api/BackendAPI";
+import { deleteKey } from "../../api/BackendAPI";
 
 export default class Delete extends Component {
     constructor(props) {

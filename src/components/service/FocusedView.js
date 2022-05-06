@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import notFound from './../logo/not-found.jpg';
-import { extractKey } from "../api/BackendAPI";
+import notFound from './../../logo/not-found.jpg';
+import { extractKey } from "../../api/BackendAPI";
 
 export default class FocusedView extends Component {
     constructor(props) {

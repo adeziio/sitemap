@@ -3,7 +3,7 @@ import { Alert, ImageList } from '@mui/material';
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import ScrollUpButton from "react-scroll-up-button";
 import GalleryPhoto from "./GalleryPhoto";
-import { getGallery } from "./../api/BackendAPI";
+import { getGallery } from "../../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {

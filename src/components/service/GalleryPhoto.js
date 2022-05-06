@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Alert, CardActionArea, CardMedia, ImageListItem, Dialog, DialogTitle, DialogContent, Button } from '@mui/material';
 import { DeleteForever } from '@mui/icons-material';
-import { extractKey, deleteKey } from "../api/BackendAPI";
+import { extractKey, deleteKey } from "../../api/BackendAPI";
 
 export default class GalleryPhoto extends Component {
     constructor(props) {
