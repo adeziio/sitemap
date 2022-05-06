@@ -41,29 +41,26 @@ export default class Main extends Component {
         const { page, isAdmin, size } = this.state;
 
         return (
-            <div >
+            <>
                 <div className="header-container">
                     <Header setPage={this.setPage} isAdmin={isAdmin} />
                 </div>
 
                 <div className="content-container">
-                    {page === "Upload" ? <Upload />
-                        : page === "Extract" ? <Extract />
-                            : page === "Delete" ? <Delete />
-                                : page === "About" ? <About size={size} />
-                                    : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
-                                        : null
-                    }
-                    {page === "Gallery" ?
-                        <Gallery isAdmin={isAdmin} size={size} setSize={this.setSize} />
-                        : null
+                    {page === "Gallery" ? <Gallery isAdmin={isAdmin} size={size} setSize={this.setSize} />
+                        : page === "Upload" ? <Upload />
+                            : page === "Extract" ? <Extract />
+                                : page === "Delete" ? <Delete />
+                                    : page === "About" ? <About size={size} />
+                                        : page === "User" ? <User isAdmin={isAdmin} setisAdmin={this.setisAdmin} />
+                                            : null
                     }
                 </div>
 
                 <div className="footer-container">
                     <Footer />
                 </div>
-            </div>
+            </>
         )
     }
 }
