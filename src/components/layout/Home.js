@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './../css/style.css';
 import Header from "./Header";
 import Upload from "./Upload";
 import Extract from "./Extract";

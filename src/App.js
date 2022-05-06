@@ -5,6 +5,7 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
+import './components/css/style.css';
 import Home from './components/layout/Home';
 import FocusedView from './components/layout/FocusedView';
 
