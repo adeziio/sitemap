@@ -1,4 +1,4 @@
-export const getGallery = async () => {
+export const fetchGallery = async () => {
     try {
         const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/gallery`, {
             "method": "GET",

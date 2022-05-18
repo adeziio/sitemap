@@ -3,7 +3,7 @@ import { Alert, ImageList } from '@mui/material';
 import PullToRefresh from 'react-simple-pull-to-refresh';
 import ScrollUpButton from "react-scroll-up-button";
 import GalleryPhoto from "./GalleryPhoto";
-import { getGallery } from "../../api/BackendAPI";
+import { fetchGallery } from "../../api/BackendAPI";
 
 export default class Gallery extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class Gallery extends Component {
     }
 
     getGallery = async () => {
-        let resGallery = await getGallery();
+        let resGallery = await fetchGallery();
         if (resGallery) {
             this.setState({
                 gallery: resGallery.gallery
@@ -35,7 +35,7 @@ export default class Gallery extends Component {
     }
 
     refresh = async () => {
-        let resGallery = await getGallery();
+        let resGallery = await fetchGallery();
         if (resGallery) {
             if (resGallery.size !== this.props.size) {
                 this.setState({
