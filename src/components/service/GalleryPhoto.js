@@ -13,15 +13,13 @@ const GalleryPhoto = (props) => {
     const src = `data:image/*;base64,${base64}`;
 
     useEffect(() => {
-        if (item) {
-            extractByKey(item.key);
-        }
-    }, [item])
+        extractByKey(item.key);
+    }, [item.key]);
 
     const toggleDialog = () => {
         setDialog(prevDialog => !prevDialog);
         setResMsg("");
-    }
+    };
 
     const extractByKey = async (key) => {
         let resExtract = await extractKey(key);
@@ -30,7 +28,7 @@ const GalleryPhoto = (props) => {
                 setBase64(resExtract.base64);
             }
         }
-    }
+    };
 
     const deleteByKey = async (key) => {
         let resDelete = await deleteKey(key);
@@ -46,11 +44,11 @@ const GalleryPhoto = (props) => {
         else {
             setResMsg("Failed");
         }
-    }
+    };
 
     const focusedView = (key) => {
         window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
-    }
+    };
 
     return (
         <>

@@ -11,7 +11,7 @@ const FocusedView = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const key = urlParams.get('key');
         extract(key);
-    });
+    }, []);
 
     const extract = async (key) => {
         let resExtract = await extractKey(key);
