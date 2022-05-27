@@ -24,7 +24,7 @@ const Main = () => {
                     : page === "Upload" ? <Upload />
                         : page === "Extract" ? <Extract />
                             : page === "Delete" ? <Delete />
-                                : page === "About" ? <About size={size} />
+                                : page === "About" ? <About size={size} setPage={setPage} />
                                     : page === "User" ? <User isAdmin={isAdmin} setisAdmin={setisAdmin} />
                                         : null
                 }
