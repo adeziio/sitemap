@@ -20,15 +20,20 @@ const Extract = () => {
             let resExtract = await extractKey(key);
             if (resExtract) {
                 if (resExtract.status === "Success") {
+                    setResMsg(resExtract.status);
                     setBase64(resExtract.base64);
                     setDate(resExtract.date);
                 }
                 else {
                     setResMsg("Failed");
+                    setBase64("");
+                    setDate("");
                 }
             }
             else {
                 setResMsg("Failed");
+                setBase64("");
+                setDate("");
             }
         }
     };
@@ -46,6 +51,7 @@ const Extract = () => {
                 <Button sx={{ marginTop: 1 }} type="button" color="primary" variant="contained" onClick={extract} >
                     Extract
                 </Button>
+                {resMsg === "Success" ? <Alert sx={{ marginTop: 1 }} severity="success">{resMsg}</Alert> : null}
                 {resMsg === "Failed" ? <Alert sx={{ marginTop: 1 }} severity="error">{`Failed to extract`}</Alert> : null}
             </FormControl>
             {base64 ?

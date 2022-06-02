@@ -61,6 +61,12 @@ export default class Upload extends Component {
         const { resMsg, previewSrc } = this.state;
         const fileTypes = ["jpeg", "jpg", "png", "gif"];
 
+        const focusedView = (src) => {
+            const newTab = window.open();
+            newTab?.document.write(`<!DOCTYPE html><head><title></title></head><body><img src="${src}" width="100%" height="auto" ></body></html>`);
+            newTab?.document.close();
+        };
+
         return (
             <>
                 <FormControl variant="standard" sx={{ width: "22rem", marginTop: "2rem" }}>
@@ -89,6 +95,7 @@ export default class Upload extends Component {
                             width="100%"
                             image={previewSrc}
                             alt={"img"}
+                            onClick={() => focusedView(previewSrc)}
                         />
                     </Card> : null
                 }
