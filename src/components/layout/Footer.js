@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <>
             <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "block" }}>
-                © 2022 Created by Aden Tran.
+                © 2023 Created by Aden Tran.
             </Typography>
 
             <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>
