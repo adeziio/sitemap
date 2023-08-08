@@ -46,9 +46,9 @@ const GalleryPhoto = (props) => {
         }
     };
 
-    const focusedView = (key) => {
-        window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
-    };
+    // const focusedView = (key) => {
+    //     window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
+    // };
 
     return (
         <>
@@ -95,7 +95,7 @@ const GalleryPhoto = (props) => {
                                         <div>
                                             {date}
                                         </div>
-                                        {/* <DeleteForever onClick={() => toggleDialog(key)} /> */}
+                                        <DeleteForever onClick={() => toggleDialog(key)} />
                                     </>
                                     : null
                                 }
