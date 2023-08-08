@@ -10,13 +10,16 @@ const FocusedView = () => {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const key = urlParams.get('key');
+        console.log(key)
         extract(key);
     }, []);
 
     const extract = async (key) => {
+        console.log("extracting key...")
         let resExtract = await extractKey(key);
         if (resExtract) {
             if (resExtract.status === "Success") {
+                console.log(resExtract.base64)
                 setBase64(resExtract.base64);
             }
             else {
