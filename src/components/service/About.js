@@ -6,6 +6,7 @@ const About = (props) => {
     return (
         <>
             <div style={{ marginTop: "2rem" }}>
+                <img src="https://visitor-badge.laobi.icu/badge?page_id=adeziio.3" alt="visitors" />
                 <Typography variant="h5" color="text.primary" fontSize="1.5rem" fontWeight="bold" margin="1rem" >
                     Welcome to Star Gallery!
                 </Typography>

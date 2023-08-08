@@ -14,11 +14,14 @@
     margin-top: 2rem;
     background-color: white;
     display: inline-block;
-    min-height: 35rem;
 }
 
 .footer-container {
-    margin: 2rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 1rem;
 }
 
 .photo-modal-box {
