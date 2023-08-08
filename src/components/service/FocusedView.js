@@ -8,20 +8,15 @@ const FocusedView = () => {
     const src = resMsg !== "Failed" ? `data:image/*;base64,${base64}` : notFound;
 
     useEffect(() => {
-        console.log("mounted")
-        console.log(window.location.search)
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const key = urlParams.get('key');
-        // console.log("key:", key)
-        extract("8a995fcf005a31c669c9008085b0ab5b");
+        const urlParams = new URLSearchParams(window.location.search);
+        const key = urlParams.get('key');
+        extract(key);
     }, []);
 
     const extract = async (key) => {
-        console.log("extracting key...")
         let resExtract = await extractKey(key);
         if (resExtract) {
             if (resExtract.status === "Success") {
-                console.log(resExtract.base64)
                 setBase64(resExtract.base64);
             }
             else {

@@ -47,7 +47,7 @@ const GalleryPhoto = (props) => {
     };
 
     const focusedView = (key) => {
-        window.open(`/${key}`, '_blank', 'noopener,noreferrer');
+        window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
     };
 
     return (
@@ -72,7 +72,7 @@ const GalleryPhoto = (props) => {
                                 width="100%"
                                 image={src}
                                 alt=""
-                                onClick={() => focusedView(key)}
+                            // onClick={() => focusedView(key)}
                             />
                         </DialogContent>
                     </Dialog>
