@@ -8,9 +8,10 @@ const FocusedView = () => {
     const src = resMsg !== "Failed" ? `data:image/*;base64,${base64}` : notFound;
 
     useEffect(() => {
+        console.log("mounted")
         const urlParams = new URLSearchParams(window.location.search);
         const key = urlParams.get('key');
-        console.log(key)
+        console.log("key:", key)
         extract(key);
     }, []);
 
