@@ -9,15 +9,16 @@ const FocusedView = () => {
 
     useEffect(() => {
         console.log("mounted")
-        const urlParams = new URLSearchParams(window.location.search);
-        const key = urlParams.get('key');
-        console.log("key:", key)
+        console.log(window.location.search)
+        // const urlParams = new URLSearchParams(window.location.search);
+        // const key = urlParams.get('key');
+        // console.log("key:", key)
         extract(key);
     }, []);
 
     const extract = async (key) => {
         console.log("extracting key...")
-        let resExtract = await extractKey(key);
+        let resExtract = await extractKey("8a995fcf005a31c669c9008085b0ab5b");
         if (resExtract) {
             if (resExtract.status === "Success") {
                 console.log(resExtract.base64)

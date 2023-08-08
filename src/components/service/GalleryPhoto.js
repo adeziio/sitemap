@@ -47,7 +47,7 @@ const GalleryPhoto = (props) => {
     };
 
     const focusedView = (key) => {
-        window.open(`/photo?key=${key}`, '_blank', 'noopener,noreferrer');
+        window.open(`/${key}`, '_blank', 'noopener,noreferrer');
     };
 
     return (
