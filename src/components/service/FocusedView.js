@@ -13,12 +13,12 @@ const FocusedView = () => {
         // const urlParams = new URLSearchParams(window.location.search);
         // const key = urlParams.get('key');
         // console.log("key:", key)
-        extract(key);
+        extract("8a995fcf005a31c669c9008085b0ab5b");
     }, []);
 
     const extract = async (key) => {
         console.log("extracting key...")
-        let resExtract = await extractKey("8a995fcf005a31c669c9008085b0ab5b");
+        let resExtract = await extractKey(key);
         if (resExtract) {
             if (resExtract.status === "Success") {
                 console.log(resExtract.base64)
