@@ -87,7 +87,7 @@ const GalleryPhoto = (props) => {
                                     width="100%"
                                     image={src}
                                     alt=""
-                                    onClick={() => focusedView(key)}
+                                // onClick={() => focusedView(key)}
                                 />
 
                                 {isAdmin ?
@@ -95,7 +95,7 @@ const GalleryPhoto = (props) => {
                                         <div>
                                             {date}
                                         </div>
-                                        <DeleteForever onClick={() => toggleDialog(key)} />
+                                        {/* <DeleteForever onClick={() => toggleDialog(key)} /> */}
                                     </>
                                     : null
                                 }
