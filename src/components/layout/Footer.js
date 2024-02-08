@@ -6,7 +6,11 @@ const Footer = () => {
     return (
         <>
             <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "block" }}>
-                © 2023 Created by Aden Tran.
+                <img src="https://visitor-badge.laobi.icu/badge?page_id=adeziio.3" alt="visitors" />
+            </Typography>
+
+            <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "block" }}>
+                © 2024 Created by Aden Tran.
             </Typography>
 
             <Typography variant="body2" color="text.secondary" fontSize="1rem" sx={{ display: "inline-block" }}>

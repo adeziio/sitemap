@@ -31,7 +31,7 @@ const Main = () => {
             </div>
 
             <div className="footer-container">
-                {page !== "Gallery" ? <Footer /> : null}
+                <Footer />
             </div>
         </>
     )
